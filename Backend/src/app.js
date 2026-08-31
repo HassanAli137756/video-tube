@@ -17,7 +17,7 @@ export const app = express()
 
 app.use(cors({
     origin: [
-        "https://vercel.app", // Aapka naya frontend URL
+        "https://video-tube-k17vgy14v-hassanali240489-4130s-projects.vercel.app/", // Aapka naya frontend URL
         "http://localhost:5173" // Local test karne ke liye (agar Vite hai)
     ],
     credentials: true,
