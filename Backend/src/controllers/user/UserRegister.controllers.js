@@ -82,8 +82,8 @@ const userRegister = asyncHandler(async (req, res, next) =>
 
     const newRegisteredUser = await User.create(
     {
-        avatar: cloudinaryAvatar.url,
-        coverImage: cloudinaryCoverImage?.url || '',
+        avatar: cloudinaryAvatar.secure_url,
+        coverImage: cloudinaryCoverImage?.secure_url || '',
         email,
         fullName,
         password,
