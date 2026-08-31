@@ -68,6 +68,12 @@ const router = createBrowserRouter(
           path="/profile"
           element={<MyProfile />}
         />
+        
+        <Route
+          path="/upload-vedio"
+          element={<VideoUpload />}
+        />
+
 
       <Route element={<UnAuthorizedUserLayout />} >
         <Route path="/login" element={<Login />} />
@@ -89,11 +95,6 @@ const router = createBrowserRouter(
           element={<MyContent />}
         />
 
-
-        <Route
-          path="/upload-vedio"
-          element={<VideoUpload />}
-        />
 
 
         <Route
