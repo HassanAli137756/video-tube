@@ -16,10 +16,9 @@ import {errorMiddleware} from './middelwares/error.middleware.js'
 export const app = express()
 
 app.use(cors({
-    origin: ["https://video-tube-noduq53ci-hassanali240489-4130s-projects.vercel.app/"],
+    origin: "https://video-tube-346yc1mzh-hassanali240489-4130s-projects.vercel.app",
     credentials: true
 }));
-
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
