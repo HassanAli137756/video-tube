@@ -1,4 +1,4 @@
-/* import 'dotenv/config.js'
+import 'dotenv/config.js'
 
 import {ConnectDB} from './db/ConnectDB.js'
 import express from 'express'
@@ -25,8 +25,8 @@ ConnectDB()
         throw new ApiError(500, 'Failed to connect MongoDB', '', error)
     })
 
- */
 
+/* 
 import 'dotenv/config.js'
 
 
@@ -60,9 +60,9 @@ app.use(async (req, res, next) => {
 
 // Local testing ke liye (Vercel isko ignore karega, lekin local pe kaam karega)
 if (process.env.NODE_ENV !== 'production') {
-    app.listen(process.env.PORT || 3000, () => {
+    app.listen(process.env.PORT, () => {
         console.log('Server is running locally on port:', process.env.PORT || 3000);
     });
 }
-
+ */
 export default app; // Vercel ke liye sab se zaroori line
