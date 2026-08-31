@@ -48,10 +48,10 @@ const uploadVedio = asyncHandler( async (req, res) =>
     const DBVedio = await Vedio.create(
     {
         description,
-        thumbNail: uploadedThumbnail.url,
+        thumbNail: uploadedThumbnail.secure_url,
         thumbNail_publicId: uploadedThumbnail.public_id,
         title,
-        vedio: uploadedVedio.url,
+        vedio: uploadedVedio.secure_url,
         vedio_publicId: uploadedVedio.public_id,
         duration: uploadedVedio.duration,
         owner: userid,
