@@ -1,6 +1,21 @@
 
 import axios, { AxiosError } from 'axios'
-
+/* {
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/index.js"
+    }
+  ]
+}
+ */
 
 const api = axios.create(
     {
