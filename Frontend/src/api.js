@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios'
 
 const api = axios.create(
     {
-        baseURL: "https://video-tube-34ly-2cbrznwhv-hassanali240489-4130s-projects.vercel.app/api/v1",
+        baseURL: "https://video-tube-34ly.vercel.app/api/v1",
         withCredentials: true
     }
 )
