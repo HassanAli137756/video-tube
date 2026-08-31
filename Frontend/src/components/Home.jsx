@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { VideoCards } from "../utils/VedioCards";
 import { api } from "../api";
 import { CustomButton } from "../utils/CustomButton";
+import {useSelector} from "react-redux"
 
 function Home() 
 {
+  const currentUser = useSelector(state => state.userReducer.userInfo)
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState("")
