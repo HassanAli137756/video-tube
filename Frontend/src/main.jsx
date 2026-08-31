@@ -64,6 +64,11 @@ const router = createBrowserRouter(
           element={<RunVideo />}
         />
 
+        <Route
+          path="/profile"
+          element={<MyProfile />}
+        />
+
       <Route element={<UnAuthorizedUserLayout />} >
         <Route path="/login" element={<Login />} />
 
@@ -76,10 +81,7 @@ const router = createBrowserRouter(
       <Route element={<AuthorizedUserLayout />}>
 
 
-        <Route
-          path="/profile"
-          element={<MyProfile />}
-        />
+        
 
 
         <Route
