@@ -6,11 +6,13 @@ import {useSelector} from "react-redux"
 
 function Home() 
 {
-  const currentUser = useSelector(state => state.userReducer.userInfo)
+   const currentUser = useSelector(state => state.userReducer.userInfo)
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState("")
 
+  console.log("RTK User in HOME: ", currentUser)
+  
   const getAllVedios = async () =>
   {
     try 
