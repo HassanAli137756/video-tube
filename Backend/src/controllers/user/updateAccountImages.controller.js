@@ -62,9 +62,9 @@ const updateAccountImages = asyncHandler( async (req, res) =>
 
 
     DBUser.avatarPublicID = newUploadedAvatar?.public_id || DBUser?.avatarPublicID
-    DBUser.avatar = newUploadedAvatar?.url || DBUser?.avatar
+    DBUser.avatar = newUploadedAvatar?.secure_url || DBUser?.avatar
     DBUser.coverPublicID = newUploadedCover?.public_id || DBUser?.coverPublicID
-    DBUser.coverImage = newUploadedCover?.url || DBUser?.coverImage
+    DBUser.coverImage = newUploadedCover?.secure_url || DBUser?.coverImage
 
 
     const isUserSaved = await DBUser.save({validateBeforeSave: false})
