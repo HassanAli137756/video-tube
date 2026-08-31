@@ -15,8 +15,15 @@ import {errorMiddleware} from './middelwares/error.middleware.js'
 
 export const app = express()
 
-    app.use(cors({ origin: true, credentials: true }));
-
+app.use(cors({
+    origin: [
+        "https://vercel.app", // Aapka naya frontend URL
+        "http://localhost:5173" // Local test karne ke liye (agar Vite hai)
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 
 app.use(express.json())
