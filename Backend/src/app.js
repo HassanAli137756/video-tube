@@ -16,13 +16,8 @@ import {errorMiddleware} from './middelwares/error.middleware.js'
 export const app = express()
 
 app.use(cors({
-    origin: [
-        "https://video-tube-k17vgy14v-hassanali240489-4130s-projects.vercel.app/", // Aapka naya frontend URL
-        "http://localhost:5173" // Local test karne ke liye (agar Vite hai)
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    origin: true,
+    credentials: true
 }));
 
 
