@@ -65,4 +65,3 @@ if (process.env.NODE_ENV !== 'production') {
     });
 }
  */
-export default app; // Vercel ke liye sab se zaroori line
