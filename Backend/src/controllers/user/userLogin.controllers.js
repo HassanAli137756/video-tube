@@ -89,7 +89,8 @@ const userLogin = asyncHandler( async (req, res) =>
     {
         // httpOnly will convert given cookie in such a fromat which can only be read by server, which increase security and, reduce hacking chances
         httpOnly: true,
-        secure: true
+        secure: true,
+        sameSite: "none"
     }
 
 
