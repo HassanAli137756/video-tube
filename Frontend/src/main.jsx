@@ -58,6 +58,11 @@ const router = createBrowserRouter(
 
 
       <Route path="/" element={<Home />} />
+      
+        <Route
+          path="/run-vedio/:vedioId"
+          element={<RunVideo />}
+        />
 
       <Route element={<UnAuthorizedUserLayout />} >
         <Route path="/login" element={<Login />} />
@@ -95,10 +100,6 @@ const router = createBrowserRouter(
         />
 
 
-        <Route
-          path="/run-vedio/:vedioId"
-          element={<RunVideo />}
-        />
 
 
         <Route
