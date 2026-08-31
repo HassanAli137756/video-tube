@@ -19,7 +19,7 @@ app.use(
     
     cors(
     {
-        origin: "https://video-tube-cqpxlo7fa-hassanali240489-4130s-projects.vercel.app",
+        origin: "https://video-tube-b8jm5ekvc-hassanali240489-4130s-projects.vercel.app",
         credentials: true
     }
     )
