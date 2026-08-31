@@ -8,7 +8,7 @@ export default defineConfig({
     
     proxy:
     {
-      '/api/v1': 'http://localhost:3000/'
+      '/api/v1': 'https://video-tube-34ly-50kcudvw8-hassanali240489-4130s-projects.vercel.app/'
     }
   },
   plugins: [
