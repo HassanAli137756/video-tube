@@ -11,8 +11,8 @@ const uploadVedio = asyncHandler( async (req, res) =>
 {
     const userid = req.user?._id
     const { title, description, isPublished=true} = req.body
-    const thumbNail = req.files?.thumbNail[0]?.path
-    const vedio = req.files?.vedio[0]?.path
+    const thumbNail = req.files?.thumbNail[0]?.buffer
+    const vedio = req.files?.vedio[0]?.buffer
 
 
     if(!userid)
@@ -48,10 +48,10 @@ const uploadVedio = asyncHandler( async (req, res) =>
     const DBVedio = await Vedio.create(
     {
         description,
-        thumbNail: uploadedThumbnail.url,
+        thumbNail: uploadedThumbnail.secure_url,
         thumbNail_publicId: uploadedThumbnail.public_id,
         title,
-        vedio: uploadedVedio.url,
+        vedio: uploadedVedio.secure_url,
         vedio_publicId: uploadedVedio.public_id,
         duration: uploadedVedio.duration,
         owner: userid,

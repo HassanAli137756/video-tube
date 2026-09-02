@@ -1,4 +1,4 @@
-
+/* 
 import multer from 'multer'
 
 
@@ -25,3 +25,17 @@ export const uploader = multer(
         storage: storage
     }
 )
+ */
+
+import multer from 'multer'
+
+
+const storage = multer.memoryStorage()
+
+
+export const uploader = multer(
+{
+    storage: storage
+}
+)
+

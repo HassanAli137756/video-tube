@@ -12,12 +12,12 @@ const userRegister = asyncHandler(async (req, res, next) =>
     const {userName, email, password, fullName} = req.body
 
 
-    const localAvatarPath = req.files?.avatar[0]?.path
+    const localAvatarFile = req.files?.avatar[0]?.buffer
     let localCoverImagePath = null
 
-    if(req.files?.coverImage && req.files?.coverImage[0]?.path)
+    if(req.files?.coverImage && req.files?.coverImage[0]?.buffer)
     {
-        localCoverImagePath = req.files.coverImage[0].path
+        localCoverImagePath = req.files.coverImage[0].buffer
     }
 
 
@@ -33,9 +33,8 @@ const userRegister = asyncHandler(async (req, res, next) =>
 
 
     
-    if(!localAvatarPath) 
+    if(!localAvatarFile) 
     {
-        if(localCoverImagePath) fs.unlinkSync(localAvatarPath)
         throw new ApiError(400, 'Avatar is required field')
     }
 
@@ -51,8 +50,6 @@ const userRegister = asyncHandler(async (req, res, next) =>
 
     if(registeredUser)
     {
-        if(localCoverImagePath) fs.unlinkSync(localCoverImagePath)
-        if(localAvatarPath) fs.unlinkSync(localAvatarPath)
 
 
         throw new ApiError(400, "User with this name or email already existed")
@@ -60,7 +57,7 @@ const userRegister = asyncHandler(async (req, res, next) =>
 
 
 
-    const cloudinaryAvatar = await uploadImageOnCloundinary(localAvatarPath)
+    const cloudinaryAvatar = await uploadImageOnCloundinary(localAvatarFile)
     let cloudinaryCoverImage = null
 
     if(!cloudinaryAvatar)
@@ -82,8 +79,8 @@ const userRegister = asyncHandler(async (req, res, next) =>
 
     const newRegisteredUser = await User.create(
     {
-        avatar: cloudinaryAvatar.url,
-        coverImage: cloudinaryCoverImage?.url || '',
+        avatar: cloudinaryAvatar.secure_url,
+        coverImage: cloudinaryCoverImage?.secure_url || '',
         email,
         fullName,
         password,

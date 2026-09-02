@@ -19,7 +19,7 @@ const updateVedio = asyncHandler( async (req, res) =>
         
     const userId = req.user?._id
     const {title, description, isPublished} = req?.body
-    const thumbNail = req.file?.path
+    const thumbNail = req.file?.buffer
     const vedioId = req.params?.vedioId
 
 
@@ -93,9 +93,9 @@ const updateVedio = asyncHandler( async (req, res) =>
         DBVedio.isPublished = isPublished
     }
 
-    if(isThumbNailProvided && newUploadedThumbnail.url && oldThumbnailId.length > 0)
+    if(isThumbNailProvided && newUploadedThumbnail.secure_url && oldThumbnailId.length > 0)
     {
-        DBVedio.thumbNail = newUploadedThumbnail.url
+        DBVedio.thumbNail = newUploadedThumbnail.secure_url
         DBVedio.thumbNail_publicId = newUploadedThumbnail.public_id
     }
 

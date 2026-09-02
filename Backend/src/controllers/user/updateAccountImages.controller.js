@@ -7,22 +7,22 @@ import {User} from '../../models/user.models.js'
 
 const updateAccountImages = asyncHandler( async (req, res) =>
 {
-    let localAvatarPath = ""
-    let localCoverPath = ""
+    let localAvatarFile = ""
+    let localCoverFile = ""
 
     if(req.files?.avatar && req.files?.avatar[0])
     {
-        localAvatarPath = req.files.avatar[0].path
+        localAvatarFile = req.files.avatar[0].buffer
     }
 
     if(req.files?.coverImage && req.files?.coverImage[0])
     {
-        localCoverPath = req.files.coverImage[0].path
+        localCoverFile = req.files.coverImage[0].buffer
     }
 
-    if(!localAvatarPath && !localCoverPath)
+    if(!localAvatarFile && !localCoverFile)
     {
-        throw new ApiError(400, "Please provide image to update");
+        throw new ApiResponse(200, "failed to upload", req.files?.avatar[0])
         
     }
 
@@ -43,14 +43,14 @@ const updateAccountImages = asyncHandler( async (req, res) =>
     let newUploadedAvatar = {}
     let newUploadedCover = {}
 
-    if(localAvatarPath)
+    if(localAvatarFile)
     {
-        newUploadedAvatar = await uploadImageOnCloundinary(localAvatarPath)
+        newUploadedAvatar = await uploadImageOnCloundinary(localAvatarFile)
     }
 
-    if(localCoverPath)
+    if(localCoverFile)
     {
-        newUploadedCover = await uploadImageOnCloundinary(localCoverPath)
+        newUploadedCover = await uploadImageOnCloundinary(localCoverFile)
     }
 
     if(!newUploadedAvatar && newUploadedCover)
@@ -59,12 +59,14 @@ const updateAccountImages = asyncHandler( async (req, res) =>
 
     }
 
+    console.log("New uploaded avatar", newUploadedAvatar);
+    
 
 
     DBUser.avatarPublicID = newUploadedAvatar?.public_id || DBUser?.avatarPublicID
-    DBUser.avatar = newUploadedAvatar?.url || DBUser?.avatar
+    DBUser.avatar = newUploadedAvatar?.secure_url || DBUser?.avatar
     DBUser.coverPublicID = newUploadedCover?.public_id || DBUser?.coverPublicID
-    DBUser.coverImage = newUploadedCover?.url || DBUser?.coverImage
+    DBUser.coverImage = newUploadedCover?.secure_url || DBUser?.coverImage
 
 
     const isUserSaved = await DBUser.save({validateBeforeSave: false})
