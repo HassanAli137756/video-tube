@@ -88,10 +88,7 @@ const updateVedio = asyncHandler( async (req, res) =>
         DBVedio.description = description
     }
 
-    if(typeof isPublished == "boolean")
-    {
-        DBVedio.isPublished = isPublished
-    }
+    DBVedio.isPublished = isPublished
 
     if(isThumbNailProvided && newUploadedThumbnail.secure_url && oldThumbnailId.length > 0)
     {
