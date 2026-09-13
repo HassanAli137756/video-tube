@@ -13,8 +13,6 @@ export const asyncHandler = (fn) =>
             try 
             {
                 await fn(req, res, next)
-
-                
                 
                 
             } 
