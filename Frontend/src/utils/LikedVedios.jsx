@@ -25,7 +25,7 @@ function LikedVideos()
         setTimeout(() => 
         {
             navigate("/login")
-        }, 2500);
+        }, 500);
     }
 
     try 

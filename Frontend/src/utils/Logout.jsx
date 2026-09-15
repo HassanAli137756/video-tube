@@ -37,7 +37,7 @@ function Logout()
                         dispatch(removeUserInfo())
 
                     navigate('/login')
-                }, 2500);
+                }, 1000);
             }
             else
             {
@@ -58,7 +58,7 @@ function Logout()
             setTimeout(() => 
             {
                 setMsg("")
-            }, 3000);
+            }, 2000);
         }
     }
 

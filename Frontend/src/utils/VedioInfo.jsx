@@ -32,7 +32,7 @@ function VedioInfo(
     const removeMsg = () => {
         setTimeout(() => {
             setMsg("")
-        }, 2500);
+        }, 2000);
     }
 
 

@@ -17,7 +17,7 @@ function RemoveComment(
     {
         setTimeout(() => {
             setMsg("")
-        }, 2000);
+        }, 1000);
     } 
 
 
@@ -59,7 +59,7 @@ function RemoveComment(
                       setMsg("")
                       
   
-                  }, 2500);
+                  }, 2000);
   
               }
   

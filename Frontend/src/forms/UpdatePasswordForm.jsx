@@ -51,7 +51,7 @@ function UpdatePasswordForm() {
                 setMsg(res.data?.message || "Password updated successfully")
                 setTimeout(() => {
                     navigate("/settings")
-                }, 2000);
+                }, 1000);
 
             }
             else {

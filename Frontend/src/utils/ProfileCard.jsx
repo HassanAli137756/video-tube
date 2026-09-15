@@ -25,7 +25,7 @@ const ProfileCard = (
   const removeMsg = () => {
       setTimeout(() => {
           setMsg("")
-      }, 2500);
+      }, 1000);
   }
 
 

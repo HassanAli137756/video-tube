@@ -25,7 +25,7 @@ function WatchedVideos()
         setTimeout(() => 
         {
             navigate("/login")
-        }, 2500);
+        }, 1000);
     }
 
     try 

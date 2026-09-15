@@ -31,7 +31,7 @@ function VedioComments(
         setTimeout(() => 
         {
             setMsg("")
-        }, 2500);
+        }, 500);
     }
 
     const removeComment = async (commentId) =>
@@ -65,7 +65,7 @@ function VedioComments(
                     setMsg("")
                     setAllComments(prev => (prev.filter(comment => comment._id !== commentId)))
 
-                }, 2500);
+                }, 500);
 
             }
 

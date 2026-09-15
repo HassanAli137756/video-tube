@@ -24,7 +24,7 @@ function Like(
     const removeMsg = () => {
         setTimeout(() => {
             setMsg("")
-        }, 2500);
+        }, 1000);
     }
 
     const handleLike = async () => {

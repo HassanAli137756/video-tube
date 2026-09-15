@@ -54,7 +54,7 @@ function UpdateAccountDetailsForm({existingEmail="", existingFullName= ""}) {
                 
                 setTimeout(() => {
                     navigate("/settings")
-                }, 2000);
+                }, 1000);
 
             }
             else {

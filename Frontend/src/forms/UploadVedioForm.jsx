@@ -57,7 +57,7 @@ function UploadVedioForm()
               setMsg("")
               
               navigate("/my-content")
-            }, 2500);
+            }, 1000);
 
           }
           else

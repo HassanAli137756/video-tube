@@ -70,7 +70,7 @@ function RegisterForm()
           setMsg("")  
           navigate('/login', {state: res.data.data})
           
-        }, 3000);
+        }, 1000);
       }
       else 
       {

@@ -47,7 +47,7 @@ function LoginForm() {
           setMsg("")
           navigate("/")
 
-        }, 3000);
+        }, 1000);
       }
       else {
         setMsg("Something went wrong failed to login user")

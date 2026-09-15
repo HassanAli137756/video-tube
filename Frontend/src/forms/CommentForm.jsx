@@ -69,7 +69,7 @@ function CommentForm(
                     setMsg("")
                     setComment("")
                     setDisable(false)
-                }, 2500);
+                }, 1000);
 
             }
 

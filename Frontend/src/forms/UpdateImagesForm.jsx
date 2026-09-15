@@ -55,7 +55,7 @@ function UpdateImagesForm({avatar="", coverImage= ""}) {
 
                 setTimeout(() => {
                     navigate("/settings")
-                }, 2000);
+                }, 1000);
 
             }
             else {

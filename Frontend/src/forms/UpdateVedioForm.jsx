@@ -60,7 +60,7 @@ function UpdateVedioForm(
                 setTimeout(() => 
                 {
                     navigate(routePath)
-                }, 2000);
+                }, 1000);
 
             }
             else

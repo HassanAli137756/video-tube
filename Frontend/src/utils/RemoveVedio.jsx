@@ -58,7 +58,7 @@ function RemoveVedio(
                       setMsg("")
                       
   
-                  }, 2500);
+                  }, 1000);
   
               }
   

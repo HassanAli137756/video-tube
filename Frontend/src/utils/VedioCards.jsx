@@ -28,7 +28,7 @@ function VideoCards({
     {
       setTimeout(() => {
         setMsg("")
-      }, 2055);
+      }, 1000);
     }
 
 

@@ -24,7 +24,7 @@ const ActivitiesCard = (
   const removeMsg = () => {
       setTimeout(() => {
           setMsg("")
-      }, 2500);
+      }, 1000);
   }
 
 

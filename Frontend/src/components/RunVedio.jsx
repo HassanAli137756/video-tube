@@ -25,7 +25,7 @@ function RunVideo() {
       setMsg("")
 
       navigate(url)
-    }, 2500);
+    }, 1000);
   }
 
   const addVedioToHistory = async (vedioId) =>
