@@ -48,7 +48,6 @@ function UpdateImagesForm({avatar="", coverImage= ""}) {
             const res = await api.post(`/users/update-account-images`, formData)
 
             if ((res.data.status == 200 || 201) && res.data.success) {
-                console.log("Request have reached to set activities");
 
                 dispatch(setUserInfo({isAuthorized: true, isLoading: false, userData: res.data.data}))
 

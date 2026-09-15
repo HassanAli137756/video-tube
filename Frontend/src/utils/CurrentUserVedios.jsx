@@ -23,7 +23,6 @@ function CurrentUserVedios() {
             if ((res.data.status == 200 || 201) && res.data.success) 
             {
                 
-                console.log("Vedios: ", res.data.data);
                 
 
                 setVideos(res.data.data)

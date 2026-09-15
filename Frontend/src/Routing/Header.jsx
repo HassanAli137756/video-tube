@@ -13,7 +13,6 @@ function Header() {
   const userInfo = useSelector(state => state.userReducer.userInfo)
 
 
-  console.log("RTK UserInfo", userInfo);
 
 
   const navigationLinks = userInfo.isLoadingUser ?
@@ -60,7 +59,6 @@ function Header() {
 
 
       
-      console.log("Header rendered");
       
 
 

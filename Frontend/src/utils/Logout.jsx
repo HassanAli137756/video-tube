@@ -16,7 +16,6 @@ function Logout()
 
     const userLogout = async () =>
     {
-        console.log("UserLogout Executed");
         
         setLoading(true)
         setMsg("")

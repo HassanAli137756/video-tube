@@ -25,7 +25,6 @@ function UpdatePasswordForm() {
   }
 
     const updatePassword = async (data) => {
-        console.log("Uploading Data", data);
         if(!(data.password?.trim() && data.newPassword?.trim() && data.confirmPassword?.trim()))
         {
             setMsg("All passwords must be provided")
@@ -48,7 +47,6 @@ function UpdatePasswordForm() {
             const res = await api.post('/users/update-password', {oldPassword: data.password, newPassword: data.newPassword})
 
             if ((res.data.status == 200 || 201) && res.data.success) {
-                console.log("Request have reached to set activities");
 
                 setMsg(res.data?.message || "Password updated successfully")
                 setTimeout(() => {

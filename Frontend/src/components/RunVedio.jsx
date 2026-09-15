@@ -32,7 +32,6 @@ function RunVideo() {
   {
     
     const response = await api.post(`/vedios/add-vedio-in-history/${vedioId}`)
-    console.log("is Vedios added to history", response);
 
   }
 

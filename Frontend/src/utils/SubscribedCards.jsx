@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const SubscriberCards = ({ subscribers=[] }) => 
 {
   const navigate = useNavigate()
-  console.log("All Subscribees", subscribers);
   
 
   return (

@@ -99,7 +99,6 @@ const getAllComments = asyncHandler( async (req, res) =>
     ]
     )
 
-    console.log("AllComments: ", allComments);
     
 
 

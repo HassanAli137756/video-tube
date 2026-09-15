@@ -20,7 +20,6 @@ const useFetch = (url, method = "get") => {
 
         const res = await api[method](url);
 
-        console.log("res in useAxios", res);
 
 
         if (

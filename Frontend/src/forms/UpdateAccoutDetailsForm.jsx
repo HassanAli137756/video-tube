@@ -31,7 +31,6 @@ function UpdateAccountDetailsForm({existingEmail="", existingFullName= ""}) {
     
 
     const updateAccountDetails = async (data) => {
-        console.log("Uploading Data", data);
         if(!(data.email?.trim() && data.fullName?.trim() && data.password?.trim()))
         {
             setMsg("All fields must be provided")
@@ -48,8 +47,6 @@ function UpdateAccountDetailsForm({existingEmail="", existingFullName= ""}) {
             const res = await api.patch('/users/update-account-details', data)
 
             if ((res.data.status == 200 || 201) && res.data.success) {
-                console.log("Request have reached to set activities");
-                console.log("Updated data", res);
                 
                 setMsg(res.data?.message || "Details updated successfully")
                 dispatch(setUserInfo({isAuthorized: true, isLoading: false, userData: res.data.data}))

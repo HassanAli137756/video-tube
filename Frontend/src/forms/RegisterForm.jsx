@@ -21,7 +21,6 @@ function RegisterForm()
 
 
   
-  console.log("All Files", avatarFile, coverFile);
   
   
 
@@ -39,7 +38,6 @@ function RegisterForm()
     }
 
 
-    console.log("Actual Data of Hook Form", data);
     
 
 
@@ -81,13 +79,11 @@ function RegisterForm()
       }
 
 
-      console.log("res in register form", res);
       
 
     }
     catch (error) 
     {
-      console.log("Error in catch of createAccout", error);
 
       setMsg(error.response?.data?.message || "Some thing went wrong, failed to register user")
 

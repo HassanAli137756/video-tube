@@ -14,7 +14,6 @@ function Home()
     
     
     
-    console.log("Res", res);
     
  
     

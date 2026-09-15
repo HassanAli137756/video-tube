@@ -39,7 +39,6 @@ const ActivitiesCard = (
 
       if((res.data.status == 200 || 201) && res.data.success)
       {
-        console.log("Request have reached to set activities");
         
         setActivities(res.data.data)
 
@@ -75,7 +74,6 @@ const ActivitiesCard = (
   }, [])
 
 
-  console.log("activities:", activities);
 
 
 

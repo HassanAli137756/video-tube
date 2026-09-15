@@ -26,8 +26,6 @@ function Settings()
       setMsg("Please login to access settings")
     }
 
-    console.log("isSave: ", isSave);
-    console.log("Local Save Status", localStorage.getItem("localSaveStatus"));
     
 
   }, [currentUser.userData, isSave])

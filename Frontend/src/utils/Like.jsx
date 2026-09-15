@@ -51,7 +51,6 @@ function Like(
                 if ((res.status == 200 || 201) && res.data.success) {
                     setIsLike(false)
                     setTotalLikes(prev => --prev)
-                    console.log("Successfully dislike a vedios");
                     
                 }
                 else {

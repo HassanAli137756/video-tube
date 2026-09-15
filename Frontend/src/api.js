@@ -19,7 +19,6 @@ api.interceptors.response.use(
     
     (response) => 
     {
-        console.log("Response of api", response);
         
 
         return Promise.resolve(response)
@@ -36,13 +35,11 @@ api.interceptors.response.use(
 
         const originalRequest = error.config
 
-        console.log("Error of api", error.response.data);
         
 
 
         if (error.response?.status === 401 && error.response?.data?.message == "jwt have expired") 
         {
-            console.log("If Part Executed");
             
 
 
@@ -50,7 +47,6 @@ api.interceptors.response.use(
                 await api.post("/users/refresh-access-token")
 
                 
-                console.log("Try part of have started");
 
                 
                 return api(originalRequest)
@@ -64,7 +60,6 @@ api.interceptors.response.use(
             {
 
 
-                console.log("catch of refreshing request is sending error");
                 
 
                 return Promise.reject(error)

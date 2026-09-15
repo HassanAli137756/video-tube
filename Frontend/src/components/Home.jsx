@@ -11,7 +11,6 @@ function Home()
   const [loading, setLoading] = useState(false)
   const [msg, setMsg] = useState("")
 
-  console.log("RTK User in HOME: ", currentUser)
   
   const getAllVedios = async () =>
   {

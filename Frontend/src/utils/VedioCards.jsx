@@ -43,7 +43,6 @@ function VideoCards({
 
         try 
         {
-          console.log("try of deleteVedio() executed", vedioId);
           
             setMsg("")
             setLoading(true)

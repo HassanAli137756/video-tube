@@ -53,10 +53,6 @@ function Layout()
 
             dispatch(removeUserInfo())
 
-            console.log(
-                "Error in getCurrentUser:",
-                error
-            )
 
         }
 
@@ -68,7 +64,6 @@ function Layout()
 
     }, [])
 
-  console.log("Layout executed");
 
   if (window.navigator.onLine) {
     

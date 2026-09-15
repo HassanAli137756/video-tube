@@ -18,7 +18,6 @@ const MyStats = (
 } = useLocation().state || {}
 
 
-console.log("Data in stats", data, purpose, isAuthorized);
 
   
 

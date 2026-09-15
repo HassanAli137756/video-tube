@@ -30,7 +30,6 @@ function UpdateVedioForm(
 
     const updateVedio = async (data) => 
     {
-        console.log("Uploading Data", data);
 
         if(data.title?.trim() == "" || data.description?.trim() == "" || typeof data.isPublished !== "boolean" )
         {

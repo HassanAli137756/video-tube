@@ -78,7 +78,6 @@ function Subscribe(
 
                     setIsSubscribed(true)
                     setSubscriptionId(res.data.data._id)
-                    console.log("Result of subcribed channel", res);
                     
                 }
                 else {
