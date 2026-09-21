@@ -42,7 +42,7 @@ const getWatchHistory = asyncHandler( async (req, res) =>
             {
 
                 
-                from: "videos",
+                from: "vedios",
                 localField: 'watchHistory',
                 foreignField: '_id',
                 as: 'watchHistory',
@@ -90,7 +90,7 @@ const getWatchHistory = asyncHandler( async (req, res) =>
                         $project:
                         {
                             thumbNail: 1,
-                            video: 1,
+                            vedio: 1,
                             owner: 1,
                             duration: 1,
                             title: 1,

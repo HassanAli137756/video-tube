@@ -243,7 +243,7 @@ VideoTube/
 │   │   ├── Redux/
 │   │   ├── Routing/
 │   │   ├── utils/
-│   │   ├── videoservices/
+│   │   ├── vedioServices/
 │   │   ├── api.js
 │   │   └── main.jsx
 │   │

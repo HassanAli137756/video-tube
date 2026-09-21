@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { api } from '../api'
-import { VideoCards } from '../utils/videoCards'
+import { VideoCards } from '../utils/VedioCards'
 import { CustomButton } from '../utils/CustomButton'
 import { useNavigate } from 'react-router-dom'
 
 
 
-function TotalLikesAndvideos() {
+function TotalLikesAndVedios() {
 
   const navigate = useNavigate()
 
@@ -77,7 +77,7 @@ function TotalLikesAndvideos() {
                   !loading &&
                     <p className="mt-2 text-2xl font-bold text-slate-900">
 
-                    {channelInfo?.totalvideos || 0}
+                    {channelInfo?.totalVedios || 0}
                   </p>
                 }
             </div>
@@ -130,7 +130,7 @@ function TotalLikesAndvideos() {
             </div>
 
             <div
-              onClick={() => navigate("/upload-video")}
+              onClick={() => navigate("/upload-vedio")}
               className="flex h-11 w-11 items-center justify-center rounded-xl bg-purple-50 text-purple-600 hover:cursor-pointer hover:text-purple-500 transition-all duration-300 hover:bg-purple-100">
               <span className="text-lg">+</span>
             </div>
@@ -143,4 +143,4 @@ function TotalLikesAndvideos() {
   )
 }
 
-export { TotalLikesAndvideos }
+export { TotalLikesAndVedios }

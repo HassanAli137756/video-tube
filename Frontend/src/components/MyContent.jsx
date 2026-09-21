@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { CurrentUservideos } from "../utils/CurrentUservideos"
-import { TotalLikesAndvideos } from "../utils/TotalLikesAndvideos"
+import { CurrentUserVedios } from "../utils/CurrentUserVedios"
+import { TotalLikesAndVedios } from "../utils/TotalLikesAndVedios"
 
 
 
@@ -58,7 +58,7 @@ function MyContent()
             tou yahan dynamic stats easily connect ki ja sakti hain.
         ========================================================== */}
        
-       <TotalLikesAndvideos />
+       <TotalLikesAndVedios />
 
 
 
@@ -86,7 +86,7 @@ function MyContent()
             </div>
           </div>
 
-          <CurrentUservideos />
+          <CurrentUserVedios />
 
 
          

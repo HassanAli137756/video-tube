@@ -13,23 +13,23 @@ import {Like} from '../../models/like.models.js'
 
 
 
-const likevideo = asyncHandler( async (req, res) =>
+const likeVedio = asyncHandler( async (req, res) =>
 {
-    const videoId = req.params?.videoId
+    const vedioId = req.params?.vedioId
     const userId = req.user?._id
 
 
-    if(!(videoId || userId))
+    if(!(vedioId || userId))
     {
         throw new ApiError(400, "Please provide all required fields")
     }
 
 
-    const isAlreadyLiked = await Like.findOne({liker: userId, video: videoId})
+    const isAlreadyLiked = await Like.findOne({liker: userId, vedio: vedioId})
 
     if(isAlreadyLiked)
     {
-        throw new ApiError(403, `You have already liked this video ${isAlreadyLiked}`)
+        throw new ApiError(403, `You have already liked this vedio ${isAlreadyLiked}`)
     }
 
 
@@ -39,7 +39,7 @@ const likevideo = asyncHandler( async (req, res) =>
         const newLike = await Like.create(
         {
             liker: userId,
-            video: videoId
+            vedio: vedioId
         })
     } 
 
@@ -47,8 +47,8 @@ const likevideo = asyncHandler( async (req, res) =>
     catch(error) 
     {
 
-        console.log("There is an error while liking a video", error);
-        throw new ApiError(500, "Failed to like video")
+        console.log("There is an error while liking a vedio", error);
+        throw new ApiError(500, "Failed to like vedio")
 
     }
 
@@ -59,11 +59,11 @@ const likevideo = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully liked video")
+        new ApiResponse(200, "Successfully liked vedio")
     )
 
 
 })
 
 
-export {likevideo}
+export {likeVedio}

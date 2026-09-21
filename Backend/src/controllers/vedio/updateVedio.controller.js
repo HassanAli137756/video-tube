@@ -2,12 +2,12 @@
 import {asyncHandler} from '../../utils/asyncHandler.js'
 import {ApiError} from '../../utils/CustomError.js'
 import {ApiResponse} from '../../utils/CustomResponse.js'
-import {video} from '../../models/video.models.js'
+import {Vedio} from '../../models/vedio.models.js'
 import { uploadImageOnCloundinary , removeFromCloudinary } from '../../utils/cloudinary.js'
 
 
 
-const updatevideo = asyncHandler( async (req, res) =>
+const updateVedio = asyncHandler( async (req, res) =>
 {
     
     if(!req.body)
@@ -20,10 +20,10 @@ const updatevideo = asyncHandler( async (req, res) =>
     const userId = req.user?._id
     const {title, description, isPublished} = req?.body
     const thumbNail = req.file?.buffer
-    const videoId = req.params?.videoId
+    const vedioId = req.params?.vedioId
 
 
-    console.log("ThumbNail in video controller", thumbNail);
+    console.log("ThumbNail in vedio controller", thumbNail);
     
     
 
@@ -32,9 +32,9 @@ const updatevideo = asyncHandler( async (req, res) =>
         throw new ApiError(401, "Unauthorized access, user does not exist")
     }
 
-    if(!videoId)
+    if(!vedioId)
     {
-        throw new ApiError(400, "video id is not provided")
+        throw new ApiError(400, "Vedio id is not provided")
     }
 
 
@@ -44,17 +44,17 @@ const updatevideo = asyncHandler( async (req, res) =>
     }
 
 
-    const DBvideo = await video.findById(videoId)
+    const DBVedio = await Vedio.findById(vedioId)
 
-    if(!DBvideo)
+    if(!DBVedio)
     {
-       throw new ApiError(404, "video not exist") 
+       throw new ApiError(404, "vedio not exist") 
     }
 
 
-    if(!DBvideo.owner.equals(userId))
+    if(!DBVedio.owner.equals(userId))
     {
-       throw new ApiError(401, "unauthorized action, user is not owner of video") 
+       throw new ApiError(401, "unauthorized action, user is not owner of vedio") 
 
     }
 
@@ -75,29 +75,29 @@ const updatevideo = asyncHandler( async (req, res) =>
             
         }
 
-        oldThumbnailId = DBvideo.thumbNail_publicId
+        oldThumbnailId = DBVedio.thumbNail_publicId
     }
 
     if(title?.trim())
     {
-        DBvideo.title = title
+        DBVedio.title = title
     }
 
     if(description?.trim())
     {
-        DBvideo.description = description
+        DBVedio.description = description
     }
 
-    DBvideo.isPublished = isPublished
+    DBVedio.isPublished = isPublished
 
     if(isThumbNailProvided && newUploadedThumbnail.secure_url && oldThumbnailId.length > 0)
     {
-        DBvideo.thumbNail = newUploadedThumbnail.secure_url
-        DBvideo.thumbNail_publicId = newUploadedThumbnail.public_id
+        DBVedio.thumbNail = newUploadedThumbnail.secure_url
+        DBVedio.thumbNail_publicId = newUploadedThumbnail.public_id
     }
 
 
-    await DBvideo.save({validateBeforeSave: false})
+    await DBVedio.save({validateBeforeSave: false})
 
     if(isThumbNailProvided && oldThumbnailId)
     {
@@ -125,4 +125,4 @@ const updatevideo = asyncHandler( async (req, res) =>
 })
 
 
-export {updatevideo}
+export {updateVedio}

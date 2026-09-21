@@ -2,17 +2,17 @@
 import {asyncHandler} from '../../utils/asyncHandler.js'
 import {ApiError} from '../../utils/CustomError.js'
 import {ApiResponse} from '../../utils/CustomResponse.js'
-import {uploadImageOnCloundinary, uploadvideoOnCloundinary} from '../../utils/cloudinary.js'
-import {video} from '../../models/video.models.js'
+import {uploadImageOnCloundinary, uploadVedioOnCloundinary} from '../../utils/cloudinary.js'
+import {Vedio} from '../../models/vedio.models.js'
 
 
 
-const uploadvideo = asyncHandler( async (req, res) =>
+const uploadVedio = asyncHandler( async (req, res) =>
 {
     const userid = req.user?._id
     const { title, description, isPublished=true} = req.body
     const thumbNail = req.files?.thumbNail[0]?.buffer
-    const video = req.files?.video[0]?.buffer
+    const vedio = req.files?.vedio[0]?.buffer
 
 
     if(!userid)
@@ -21,7 +21,7 @@ const uploadvideo = asyncHandler( async (req, res) =>
     }
 
 
-    if(!title?.trim() || !description?.trim() || !thumbNail || !video)
+    if(!title?.trim() || !description?.trim() || !thumbNail || !vedio)
     {
         throw new ApiError(400, "All fields are required")
     }
@@ -35,46 +35,46 @@ const uploadvideo = asyncHandler( async (req, res) =>
     }
 
     
-    const uploadedvideo = await uploadvideoOnCloundinary(video)
+    const uploadedVedio = await uploadVedioOnCloundinary(vedio)
 
 
-    if(!uploadedvideo)
+    if(!uploadedVedio)
     {
         await removeFromCloudinary(uploadedThumbnail.public_id)
-        throw new ApiError(500, "Failed to upload video on cloudinary")
+        throw new ApiError(500, "Failed to upload vedio on cloudinary")
     }
 
 
-    const DBvideo = await video.create(
+    const DBVedio = await Vedio.create(
     {
         description,
         thumbNail: uploadedThumbnail.secure_url,
         thumbNail_publicId: uploadedThumbnail.public_id,
         title,
-        video: uploadedvideo.secure_url,
-        video_publicId: uploadedvideo.public_id,
-        duration: uploadedvideo.duration,
+        vedio: uploadedVedio.secure_url,
+        vedio_publicId: uploadedVedio.public_id,
+        duration: uploadedVedio.duration,
         owner: userid,
         isPublished
     }
     )
 
 
-    if(!DBvideo)
+    if(!DBVedio)
     {
         await removeFromCloudinary(uploadedThumbnail.public_id)
-        await removeFromCloudinary(uploadedvideo.public_id)
-        throw new ApiError(500, "Something went wrong, failed to upload video")
+        await removeFromCloudinary(uploadedVedio.public_id)
+        throw new ApiError(500, "Something went wrong, failed to upload vedio")
     }
 
 
     return res
     .status(201)
     .json(
-        new ApiResponse(201, "Successfully uploaded video", DBvideo)
+        new ApiResponse(201, "Successfully uploaded vedio", DBVedio)
     )
     
 
 })
 
-export {uploadvideo}
+export {uploadVedio}

@@ -4,14 +4,14 @@ import {CustomButton} from '../utils/CustomButton'
 import { api } from "../api";
 import { useSelector } from "react-redux";
 import { Like } from "./Like";
-import { Removevideo } from "./Removevideo";
+import { RemoveVedio } from "./RemoveVedio";
 
 
 function VideoCards({
   allVideos = [],
   isAllowedOwnerOperations = false,
   isAllowedLikeButton=false,
-  isAllowedRemovevideoButton = false
+  isAllowedRemoveVedioButton = false
 }) 
 
 {
@@ -20,7 +20,7 @@ function VideoCards({
     const [loading, setLoading] = useState(false)
     const [isConfirmDeleting, setIsConfirmDeleting] = useState(false)
     const [disable, setDisable] = useState(false)
-    const [videoId, setvideoId] = useState("")
+    const [vedioId, setVedioId] = useState("")
     const [msg, setMsg] = useState("")
     const navigate = useNavigate()
 
@@ -32,13 +32,13 @@ function VideoCards({
     }
 
 
-    const deletevideo = async () => 
+    const deleteVedio = async () => 
     {
       setIsConfirmDeleting(false)
 
-      if(!videoId)
+      if(!vedioId)
       {
-        return setMsg("video id is not provided")
+        return setMsg("Vedio id is not provided")
       }
 
         try 
@@ -48,31 +48,31 @@ function VideoCards({
             setLoading(true)
             setDisable(true)
 
-            const res = await api.delete(`/videos/delete-video/${videoId}`)
+            const res = await api.delete(`/vedios/delete-vedio/${vedioId}`)
 
 
             if ((res.data.status == 200 || 201) && res.data.success) 
             {
                 
-                setMsg("Successfully deleted video")
+                setMsg("Successfully deleted vedio")
 
-                setVideos(prev => prev.filter(video => video._id !== videoId))
+                setVideos(prev => prev.filter(vedio => vedio._id !== vedioId))
 
             }
             else {
-                setMsg("Something went wrong, failed to delete video")
+                setMsg("Something went wrong, failed to delete vedio")
             }
 
         }
         catch (error) {
-            setMsg(error.response?.data?.message || "Something went wrong, failed to delete video")
+            setMsg(error.response?.data?.message || "Something went wrong, failed to delete vedio")
             
             removeMsg()
         }
         finally {
             setLoading(false)
             setDisable(false)
-            setvideoId("")
+            setVedioId("")
             removeMsg()
         }
     }
@@ -95,7 +95,7 @@ function VideoCards({
       {loading && (
         <div className="absolute inset-0 z-50  flex items-center justify-center bg-white/70 ">
           <div className="flex justify-center text-red-500 items-center italic">
-            <p>Please wait deleting video...</p>
+            <p>Please wait deleting vedio...</p>
           </div>
         </div>
       )}
@@ -107,12 +107,12 @@ function VideoCards({
             <div className=" grid relative gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
 
               <p className=" text-red-500 ">
-              Are you sure you want to delete video
+              Are you sure you want to delete vedio
             </p>
             <div className="flex justify-evenly">
               <CustomButton
               disable={disable}
-              onClick={() => (setIsConfirmDeleting(false), setvideoId(""))}
+              onClick={() => (setIsConfirmDeleting(false), setVedioId(""))}
               classes="
                   flex-1
                   rounded-lg
@@ -134,7 +134,7 @@ function VideoCards({
             />
 
             <CustomButton
-              onClick={() => deletevideo()}
+              onClick={() => deleteVedio()}
               isDisable={disable}
               isDefaultCassessAllowed={false}
               classes="
@@ -189,7 +189,7 @@ function VideoCards({
         >
           {/* ==================== THUMBNAIL ==================== */}
 
-          <Link to={`/run-video/${video._id}`} className="block">
+          <Link to={`/run-vedio/${video._id}`} className="block">
             <div className="
                 relative
                 aspect-video
@@ -300,7 +300,7 @@ function VideoCards({
 
             <div className="min-w-0 flex-1">
               <Link
-                to={`/run-video/${video._id}`}
+                to={`/run-vedio/${video._id}`}
                 className="
                   line-clamp-2
                   text-sm
@@ -340,14 +340,14 @@ function VideoCards({
             <div className="mt-4 flex justify-evenly border-t border-gray-100 pt-3">
 
               <CustomButton
-                onClick={() => navigate("/update-video", 
+                onClick={() => navigate("/update-vedio", 
                 {
                   state: 
                   {
                     title: video.title, 
                     description: video.description, 
                     isPublished: video.isPublished, 
-                    videoId: video._id, 
+                    vedioId: video._id, 
                     routePath:`/my-content`
                   }
                 }
@@ -373,7 +373,7 @@ function VideoCards({
               />
 
               <CustomButton
-                onClick={() => (setIsConfirmDeleting(true), setvideoId(video._id))}
+                onClick={() => (setIsConfirmDeleting(true), setVedioId(video._id))}
                 name="Delete"
                 isDefaultCassessAllowed={false}
                 classes="
@@ -406,18 +406,18 @@ function VideoCards({
               <Like
               isAllowedLikesCout={false}
               isLiked={true}
-              videoId={video._id}
+              vedioId={video._id}
               />
             </div>
           </div>
           }
 
           {
-            isAllowedRemovevideoButton && currentUser.userData?._id &&
+            isAllowedRemoveVedioButton && currentUser.userData?._id &&
             <div className=" flex justify-end pr-3">
             <div>
-              <Removevideo
-              videoId={video._id}
+              <RemoveVedio
+              vedioId={video._id}
               callBack={setVideos}
               />
             </div>

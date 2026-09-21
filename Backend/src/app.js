@@ -7,7 +7,7 @@ import express, { json } from 'express'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import { userRouter } from './routes/user.routes.js';
-import { videoRouter } from './routes/video.routes.js';
+import { vedioRouter } from './routes/vedio.routes.js';
 import { commentRouter } from './routes/comments.routes.js';
 import { likeRouter } from './routes/like.routes.js';
 import { subscriptionRouter } from './routes/subscription.routes.js';
@@ -16,7 +16,7 @@ import {errorMiddleware} from './middelwares/error.middleware.js'
 export const app = express()
 
 app.use(cors({
-    origin: "https://vedio-tube-zeta-one.vercel.app",
+    origin: "https://video-tube-zeta-one.vercel.app",
     credentials: true
 }));
 
@@ -29,7 +29,7 @@ app.use(cookieParser())
 
 app.use('/api/v1/users', userRouter)
 
-app.use('/api/v1/videos', videoRouter)
+app.use('/api/v1/vedios', vedioRouter)
 
 app.use('/api/v1/comments', commentRouter)
 

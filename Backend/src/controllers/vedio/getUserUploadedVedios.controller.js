@@ -5,11 +5,11 @@ import {ApiResponse} from '../../utils/CustomResponse.js'
 import {Comment} from '../../models/comment.models.js'
 import {Like} from '../../models/like.models.js'
 import {User} from '../../models/user.models.js'
-import {video} from '../../models/video.models.js'
+import {Vedio} from '../../models/vedio.models.js'
 
 
 
-const getUserUploadedvideos = asyncHandler( async (req, res) =>
+const getUserUploadedVedios = asyncHandler( async (req, res) =>
 {
     const userId = req.user?._id
 
@@ -19,8 +19,8 @@ const getUserUploadedvideos = asyncHandler( async (req, res) =>
     }
 
 
-    const videos = await video
-    .find({"owner": userId}, "-video_publicId -owner -thumbNail_publicId -video")
+    const vedios = await Vedio
+    .find({"owner": userId}, "-vedio_publicId -owner -thumbNail_publicId -vedio")
 
 
 
@@ -28,10 +28,10 @@ const getUserUploadedvideos = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully served request", videos)
+        new ApiResponse(200, "Successfully served request", vedios)
     )
 
 
 })
 
-export {getUserUploadedvideos}
+export {getUserUploadedVedios}

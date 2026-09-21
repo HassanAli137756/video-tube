@@ -17,10 +17,10 @@ const commentSchema = new Schema(
         required: true
     },
 
-    video:
+    vedio:
     {
         type: Schema.Types.ObjectId,
-        ref: "video",
+        ref: "Vedio",
         required: true
     }
 },

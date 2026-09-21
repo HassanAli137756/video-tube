@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 function Subscribe(
 {
     subscribeStatus=false,
-    videoId="",
+    vedioId="",
     ownerId="",
     subscribeDocId=""
 }
@@ -63,7 +63,7 @@ function Subscribe(
                     setSubscriptionId("")
                 }
                 else {
-                    setMsg("Failed to like video")
+                    setMsg("Failed to like vedio")
                     removeMsg()
                 }
 

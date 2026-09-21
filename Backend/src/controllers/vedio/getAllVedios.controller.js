@@ -5,14 +5,14 @@ import {ApiResponse} from '../../utils/CustomResponse.js'
 import {Comment} from '../../models/comment.models.js'
 import {Like} from '../../models/like.models.js'
 import {User} from '../../models/user.models.js'
-import {video} from '../../models/video.models.js'
+import {Vedio} from '../../models/vedio.models.js'
 
 
 
-const getAllvideos = asyncHandler( async (req, res) =>
+const getAllVedios = asyncHandler( async (req, res) =>
 {
-    const videos = await video
-    .find({"isPublished":true}, "thumbNail video owner title duration createdAt")
+    const vedios = await Vedio
+    .find({"isPublished":true}, "thumbNail vedio owner title duration createdAt")
     .populate("owner", "avatar email userName")
 
 
@@ -21,11 +21,11 @@ const getAllvideos = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully served request", videos)
+        new ApiResponse(200, "Successfully served request", vedios)
     )
 
 
 })
 
 
-export {getAllvideos}
+export {getAllVedios}

@@ -26,10 +26,10 @@ const getAllComments = asyncHandler( async (req, res) =>
         {
             $lookup:
             {
-                from: "videos",
-                localField: "video",
+                from: "vedios",
+                localField: "vedio",
                 foreignField: "_id",
-                as: "video",
+                as: "vedio",
 
                 pipeline:
                 [
@@ -71,7 +71,7 @@ const getAllComments = asyncHandler( async (req, res) =>
                         $project:
                         {
                             avatar: 1,
-                            video: 1,
+                            vedio: 1,
                             userName: 1,
                             email: 1,
                             owner: 1,
@@ -88,9 +88,9 @@ const getAllComments = asyncHandler( async (req, res) =>
         {
             $addFields:
             {
-                video:
+                vedio:
                 {
-                    $first: "$video"
+                    $first: "$vedio"
                 }
             }
         }
@@ -106,7 +106,7 @@ const getAllComments = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully fetched comments with videos", allComments)
+        new ApiResponse(200, "Successfully fetched comments with vedios", allComments)
     )
 
 

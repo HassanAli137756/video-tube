@@ -8,7 +8,7 @@ function Like(
 {
     likesCount=0,
     isLiked=false,
-    videoId="",
+    vedioId="",
     isAllowedLikesCout=true
 }
 ) 
@@ -35,9 +35,9 @@ function Like(
 
         }
 
-        if (!videoId) 
+        if (!vedioId) 
         {
-            setMsg("video ID is not provided")
+            setMsg("Vedio ID is not provided")
             return removeMsg()
 
         }
@@ -46,7 +46,7 @@ function Like(
             setDisable(true)
             if (isLike) {
 
-                const res = await api.delete(`/likes/remove-like/${videoId}`)
+                const res = await api.delete(`/likes/remove-like/${vedioId}`)
 
                 if ((res.status == 200 || 201) && res.data.success) {
                     setIsLike(false)
@@ -54,13 +54,13 @@ function Like(
                     
                 }
                 else {
-                    setMsg("Failed to like video")
+                    setMsg("Failed to like vedio")
                     removeMsg()
                 }
 
             }
             else {
-                const res = await api.post(`/likes/add-like/${videoId}`)
+                const res = await api.post(`/likes/add-like/${vedioId}`)
 
                 if ((res.status == 200 || 201) && res.data.success) {
                     setIsLike(true)

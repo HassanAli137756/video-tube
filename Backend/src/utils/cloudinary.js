@@ -49,7 +49,7 @@ const uploadImageOnCloundinary = async (localSavedFile) =>
 }
 
 
-const uploadvideoOnCloundinary = async (localSavedFile) =>
+const uploadVedioOnCloundinary = async (localSavedFile) =>
 {
     try 
     {
@@ -103,7 +103,7 @@ const removeFromCloudinary = async function (oldFileURL)
 }
 
 
-export {uploadImageOnCloundinary, removeFromCloudinary, uploadvideoOnCloundinary} */
+export {uploadImageOnCloundinary, removeFromCloudinary, uploadVedioOnCloundinary} */
 
 
 import {v2 as cloudinary} from 'cloudinary'
@@ -144,7 +144,7 @@ const uploadImageOnCloundinary = (fileBuffer) => {
 };
 
 
-const uploadvideoOnCloundinary = (buffervideo) =>
+const uploadVedioOnCloundinary = (bufferVedio) =>
 {
     return new Promise((resolve, reject) =>
     {
@@ -165,7 +165,7 @@ const uploadvideoOnCloundinary = (buffervideo) =>
         }
         )
 
-        uploadStream.end(buffervideo)
+        uploadStream.end(bufferVedio)
     })
 }
 
@@ -191,4 +191,4 @@ const removeFromCloudinary = async function (oldFileURL)
 }
 
 
-export {uploadImageOnCloundinary, removeFromCloudinary, uploadvideoOnCloundinary}
+export {uploadImageOnCloundinary, removeFromCloudinary, uploadVedioOnCloundinary}

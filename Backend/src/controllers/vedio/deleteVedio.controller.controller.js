@@ -6,43 +6,43 @@ import {removeFromCloudinary} from '../../utils/cloudinary.js'
 import {Comment} from '../../models/comment.models.js'
 import {Like} from '../../models/like.models.js'
 import {User} from '../../models/user.models.js'
-import {video} from '../../models/video.models.js'
+import {Vedio} from '../../models/vedio.models.js'
 
 
 
 
 
-const deletevideo = asyncHandler( async (req, res) =>
+const deleteVedio = asyncHandler( async (req, res) =>
 {
     
     const userId = req.user?._id
-    const videoId = req.params?.videoId
+    const vedioId = req.params?.vedioId
 
-    console.log("Request reachend in deleting video", videoId);
+    console.log("Request reachend in deleting vedio", vedioId);
     
 
     if(!userId)
     {
         throw new ApiError(401, "Unauthorized access, user does not exist")
     }
-    if(!videoId)
+    if(!vedioId)
     {
-        throw new ApiError(400, "video id is not provided")
+        throw new ApiError(400, "Vedio id is not provided")
     }
 
 
 
 
 
-    const video = await video.findById(videoId)
-    if(!video)
+    const vedio = await Vedio.findById(vedioId)
+    if(!vedio)
     {
-        throw new ApiError(404, "video not found")
+        throw new ApiError(404, "Vedio not found")
         
     }
-    if(!userId.equals(video.owner))
+    if(!userId.equals(vedio.owner))
     {
-        throw new ApiError(400, "Unauthorized access, user is not the owner of video")
+        throw new ApiError(400, "Unauthorized access, user is not the owner of vedio")
         
     }
 
@@ -51,20 +51,20 @@ const deletevideo = asyncHandler( async (req, res) =>
 
 
 
-    const deletingCommentsInstance = await Comment.deleteMany({video: video._id})
-    const deletingLikesInstance = await Like.deleteMany({video: video._id})
+    const deletingCommentsInstance = await Comment.deleteMany({vedio: vedio._id})
+    const deletingLikesInstance = await Like.deleteMany({vedio: vedio._id})
 
 
     if(!(deletingCommentsInstance || deletingLikesInstance))
     {
-        throw new ApiError(500, "Something went wrong, failed to delete comments & likes of video")
+        throw new ApiError(500, "Something went wrong, failed to delete comments & likes of vedio")
 
     }
 
     console.log("Successfully deleted comments and likes");
     
 
-    const removingThumbnailIsntance = await removeFromCloudinary(video.thumbNail_publicId)
+    const removingThumbnailIsntance = await removeFromCloudinary(vedio.thumbNail_publicId)
 
     if(!removingThumbnailIsntance)
     {
@@ -74,15 +74,15 @@ const deletevideo = asyncHandler( async (req, res) =>
     console.log("Successfully deleted thumbnail from cloudinary");
 
 
-    const removingvideoIsntance = await removeFromCloudinary(video.video_publicId)
+    const removingVedioIsntance = await removeFromCloudinary(vedio.vedio_publicId)
 
-    if(!removingvideoIsntance)
+    if(!removingVedioIsntance)
     {
-       throw new ApiError(500, "Failed to remove video please try again") 
+       throw new ApiError(500, "Failed to remove vedio please try again") 
     }
 
 
-    console.log("Successfully deleted video from cloudinary");
+    console.log("Successfully deleted vedio from cloudinary");
 
 
 
@@ -91,15 +91,15 @@ const deletevideo = asyncHandler( async (req, res) =>
 
 
 
-    const deletingInstance = await video.deleteOne({_id: videoId})
+    const deletingInstance = await Vedio.deleteOne({_id: vedioId})
 
 
-    console.log("Successfully delet video doc from mongoDB");
+    console.log("Successfully delet vedio doc from mongoDB");
     
 
     if(deletingInstance.deletedCount === 0)
     {
-        throw new ApiError(500, "Failed to delete video")
+        throw new ApiError(500, "Failed to delete vedio")
     }
 
 
@@ -110,11 +110,11 @@ const deletevideo = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully deleted video")
+        new ApiResponse(200, "Successfully deleted vedio")
     )
 
 
 })
 
 
-export {deletevideo}
+export {deleteVedio}

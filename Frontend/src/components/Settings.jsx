@@ -269,7 +269,7 @@ function Settings()
           </h2>
 
           <p className="mt-1 text-sm text-gray-500">
-            {isSave ? "Your watched videos will save now" : "Your watched videos will not save now"}
+            {isSave ? "Your watched vedios will save now" : "Your watched vedios will not save now"}
           </p>
           </div>
             <div>

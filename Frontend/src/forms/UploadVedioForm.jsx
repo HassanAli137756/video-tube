@@ -8,11 +8,11 @@ import { CustomButton } from '../utils/CustomButton'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../api'
 
-function UploadvideoForm() 
+function UploadVedioForm() 
 {
     const {register, handleSubmit, formState:{errors}} = useForm()
     const [thumbNailFile, setThumbNailFile] = useState({})
-    const [videoFile, setvideoFile] = useState({})
+    const [vedioFile, setVedioFile] = useState({})
     const [loading, setLoading] = useState(false)
     const [msg, setMsg] = useState("")
     const [disable, setDisable] = useState(false)
@@ -20,10 +20,10 @@ function UploadvideoForm()
 
 
 
-    const uploadvideo = async (data) =>
+    const uploadVedio = async (data) =>
     {
 
-      if(data.title?.trim() == "" || data.description?.trim() == "" || data.thumbNail[0]?.path == "" || data.video[0]?.path == "" )
+      if(data.title?.trim() == "" || data.description?.trim() == "" || data.thumbNail[0]?.path == "" || data.vedio[0]?.path == "" )
       {
         setMsg("Please provide all required fields")
       }
@@ -43,14 +43,14 @@ function UploadvideoForm()
           formData.append("description", data.description)
           formData.append("isPublished", data.isPublished)
           formData.append("thumbNail", data.thumbNail[0])
-          formData.append("video", data.video[0])
+          formData.append("vedio", data.vedio[0])
 
-          const res = await api.post("/videos/upload-video", formData)
+          const res = await api.post("/vedios/upload-vedio", formData)
 
 
           if((res.status == 200 || 201) && res.data.success)
           {
-            setMsg("video uploaded successfully")
+            setMsg("vedio uploaded successfully")
 
             setTimeout(() => 
             {
@@ -62,7 +62,7 @@ function UploadvideoForm()
           }
           else
           {
-            setMsg("Something went wrong, failed to upload video")
+            setMsg("Something went wrong, failed to upload vedio")
 
             setDisable(false)
           }
@@ -117,7 +117,7 @@ function UploadvideoForm()
       }
 
       <form
-        onSubmit={handleSubmit(uploadvideo)}
+        onSubmit={handleSubmit(uploadVedio)}
         className="mt-10 space-y-7">
 
 
@@ -126,7 +126,7 @@ function UploadvideoForm()
         errors={errors}
         register={register}
         isRequired={true}
-        label='video Title'
+        label='Vedio Title'
         message='Provide a short title'
         name='title'
         placeHolder='Type Title...'
@@ -136,7 +136,7 @@ function UploadvideoForm()
         errors={errors}
         register={register}
         isRequired={true}
-        label='video Description'
+        label='Vedio Description'
         message='Provide a deep description'
         name='description'
         placeHolder='Type Purposes...'
@@ -149,7 +149,7 @@ function UploadvideoForm()
         name={'isPublished'}
         register={register}
         options={[{label: "YES, will be published", value:true}, {label: "NO, will not be published", value:false}]}
-        placeholder='is this video will be published?'
+        placeholder='is this vedio will be published?'
 
         />
 
@@ -169,16 +169,16 @@ function UploadvideoForm()
         />
 
         <CustomImageInput
-        onChange={(file) => setvideoFile(file)}
-        fileName={`${videoFile?.name || "No File "} Selected`}
+        onChange={(file) => setVedioFile(file)}
+        fileName={`${vedioFile?.name || "No File "} Selected`}
         errors={errors}
         register={register}
         acceptingFileNames='MP4, WebM'
         isRequired={true}
-        label='video'
+        label='Vedio'
         logo={"▶️"}
-        name='video'
-        title='Upload video'
+        name='vedio'
+        title='Upload Vedio'
 
         
         />
@@ -193,4 +193,4 @@ function UploadvideoForm()
   )
 }
 
-export {UploadvideoForm}
+export {UploadVedioForm}

@@ -5,12 +5,12 @@ import {User} from '../../models/user.models.js'
 import mongoose from 'mongoose'
 
 
-const removevideoFromHistory = asyncHandler( async (req, res) =>
+const removeVedioFromHistory = asyncHandler( async (req, res) =>
 {
     const userId = req.user?._id
-    const videoId = req.params?.videoId
+    const vedioId = req.params?.vedioId
 
-    if(!userId  || !videoId)
+    if(!userId  || !vedioId)
     {
         throw new ApiError(401, "Please provide all required credentials ")
     }
@@ -25,9 +25,9 @@ const removevideoFromHistory = asyncHandler( async (req, res) =>
     }
 
 
-    if(DBUser.watchHistory.includes(videoId))
+    if(DBUser.watchHistory.includes(vedioId))
     {
-        DBUser.watchHistory = DBUser.watchHistory.filter(item => !item.equals(videoId))
+        DBUser.watchHistory = DBUser.watchHistory.filter(item => !item.equals(vedioId))
 
         
 
@@ -36,7 +36,7 @@ const removevideoFromHistory = asyncHandler( async (req, res) =>
         return res
         .status(200)
         .json(
-            new ApiResponse(200, `Successfully removed video from watch History: watchHistory: ${DBUser.watchHistory}`)
+            new ApiResponse(200, `Successfully removed vedio from watch History: watchHistory: ${DBUser.watchHistory}`)
         )
 
     }
@@ -45,7 +45,7 @@ const removevideoFromHistory = asyncHandler( async (req, res) =>
         return res
         .status(200)
         .json(
-            new ApiError(404, "video is not existed, may be already deleted")
+            new ApiError(404, "Vedio is not existed, may be already deleted")
         )
     }
 
@@ -60,4 +60,4 @@ const removevideoFromHistory = asyncHandler( async (req, res) =>
 })
 
 
-export {removevideoFromHistory}
+export {removeVedioFromHistory}

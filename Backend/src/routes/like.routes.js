@@ -1,9 +1,9 @@
 
 import {Router} from 'express'
 import {verifyJWT} from '../middelwares/auth.middelwares.js'
-import { likevideo } from '../controllers/likes/likevideo.contrloler.js'
-import { getAllvideosLikes } from '../controllers/likes/getAllvideosLikes.controller.js'
-import { getLikedvideos } from '../controllers/likes/getLikedvideos.controller.js'
+import { likeVedio } from '../controllers/likes/likeVedio.contrloler.js'
+import { getAllVediosLikes } from '../controllers/likes/getAllVediosLikes.controller.js'
+import { getLikedVedios } from '../controllers/likes/getLikedVedios.controller.js'
 import { removeLike } from '../controllers/likes/removeLike.controller.js'
 
 const likeRouter = Router()
@@ -11,14 +11,14 @@ const likeRouter = Router()
 
 
 
-likeRouter.route('/add-like/:videoId').post(verifyJWT, likevideo)
+likeRouter.route('/add-like/:vedioId').post(verifyJWT, likeVedio)
 
 
-likeRouter.route('/total-channel-likes').get(verifyJWT, getAllvideosLikes)
+likeRouter.route('/total-channel-likes').get(verifyJWT, getAllVediosLikes)
 
-likeRouter.route('/get-liked-videos').get(verifyJWT, getLikedvideos)
+likeRouter.route('/get-liked-vedios').get(verifyJWT, getLikedVedios)
 
-likeRouter.route('/remove-like/:videoId').delete(verifyJWT, removeLike)
+likeRouter.route('/remove-like/:vedioId').delete(verifyJWT, removeLike)
 
 
 

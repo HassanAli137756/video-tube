@@ -7,6 +7,11 @@ import {app} from './app.js'
 import { errorMiddleware } from './middelwares/error.middleware.js'
 
 
+app.get("/", (req, res) =>
+{
+    res.send("Successfully deployed backend")
+})
+
 
 
 

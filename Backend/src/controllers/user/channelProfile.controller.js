@@ -32,10 +32,10 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>
         {
             $lookup:
             {
-                from: "videos",
+                from: "vedios",
                 localField: "_id",
                 foreignField: "owner",
-                as: "videos",
+                as: "vedios",
 
                 pipeline:
                 [
@@ -44,7 +44,7 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>
                         {
                             from: "likes",
                             localField: "_id",
-                            foreignField: "video",
+                            foreignField: "vedio",
                             as: "individualLikes"
                         }
                     },
@@ -91,7 +91,7 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>
                         $project:
                         {
                             
-                            video_publicId: 0,
+                            vedio_publicId: 0,
                             thumbNail_publicId: 0
 
 
@@ -239,12 +239,12 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>
 
                 totalLikes:
                 {
-                    $sum: "$videos.individualLikes"
+                    $sum: "$vedios.individualLikes"
                 },
                 
-                totalvideos:
+                totalVedios:
                 {
-                    $size: "$videos"
+                    $size: "$vedios"
                 }
             }
         },

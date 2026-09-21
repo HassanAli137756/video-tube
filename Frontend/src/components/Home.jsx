@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VideoCards } from "../utils/videoCards";
+import { VideoCards } from "../utils/VedioCards";
 import { api } from "../api";
 import { CustomButton } from "../utils/CustomButton";
 import {useSelector} from "react-redux"
@@ -12,14 +12,14 @@ function Home()
   const [msg, setMsg] = useState("")
 
   
-  const getAllvideos = async () =>
+  const getAllVedios = async () =>
   {
     try 
     {
       setMsg("")
       setLoading(true)
 
-      const res = await api.get('/videos/get-all-videos')
+      const res = await api.get('/vedios/get-all-vedios')
 
       if((res.data.status == 200 || 201) && res.data.success)
       {
@@ -29,13 +29,13 @@ function Home()
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched videos")
+        setMsg("Something went wrong, failed to fetched vedios")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
     }
     finally
     {
@@ -46,7 +46,7 @@ function Home()
   useEffect(() =>
   {
 
-    getAllvideos()
+    getAllVedios()
     
   }, [])
   
@@ -103,7 +103,7 @@ function Home()
           </div>
 
           <CustomButton
-          onClick={() => getAllvideos()}
+          onClick={() => getAllVedios()}
           classes="
           inline-flex items-center gap-2
           rounded-lg
@@ -151,7 +151,7 @@ function Home()
               <CustomButton
               type="button"
               name="Reload"
-              onClick={() => getAllvideos()}
+              onClick={() => getAllVedios()}
               isDefaultCassessAllowed={false}
               classes="
                 mt-8

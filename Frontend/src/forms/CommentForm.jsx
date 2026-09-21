@@ -10,7 +10,7 @@ import { api } from '../api'
 function CommentForm(
     {
         addLocalNewComment,
-        videoId
+        vedioId
     }
 ) {
     const [comment, setComment] = useState("")
@@ -28,8 +28,8 @@ function CommentForm(
     const addNewComment = async () => 
     {
 
-        if (!addLocalNewComment || !videoId) {
-            return setMsg("Callback and videoId must be provided")
+        if (!addLocalNewComment || !vedioId) {
+            return setMsg("Callback and vedioId must be provided")
         }
 
         
@@ -40,7 +40,7 @@ function CommentForm(
             setMsg("")
             setLoading(true)
 
-            const res = await api.post(`/comments/add-comment/${videoId}`, {comment, comment})
+            const res = await api.post(`/comments/add-comment/${vedioId}`, {comment, comment})
 
             if ((res.data.status == 200 || 201) && res.data.success) {
 
@@ -55,7 +55,7 @@ function CommentForm(
                         "userName": currentUser.userData?.userName,
                         "avatar": currentUser.userData?.avatar
                     },
-                    "video": videoId,
+                    "vedio": vedioId,
                     "createdAt": res.data?.data?.createdAt,
                     "updatedAt": res.data?.data?.updatedAt,
                 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import UploadvideoForm from '../utils/UploadvideoForm'
+import UploadVedioForm from '../utils/UploadVedioForm'
 
-function Uploadvideo() {
+function UploadVedio() {
   return (
   <div className="min-h-screen bg-[#f7f9f8] px-4 py-6 sm:px-6 lg:px-8">
 
@@ -122,7 +122,7 @@ function Uploadvideo() {
 
           <div className="p-5 sm:p-7">
 
-                  <UploadvideoForm />
+                  <UploadVedioForm />
 
           </div>
 
@@ -314,4 +314,4 @@ function Uploadvideo() {
 )
 }
 
-export {Uploadvideo}
+export {UploadVedio}

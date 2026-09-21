@@ -30,7 +30,7 @@ const userSchema = new  Schema(
     [
         {
             type: Schema.Types.ObjectId,
-            ref: 'video'
+            ref: 'Vedio'
         }
     ],
     fullName:

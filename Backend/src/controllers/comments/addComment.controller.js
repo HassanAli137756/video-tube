@@ -10,17 +10,17 @@ import {Comment} from '../../models/comment.models.js'
 const addComment = asyncHandler( async (req, res) =>
 {
     const comment = req.body?.comment
-    const videoId = req.params?.videoId
+    const vedioId = req.params?.vedioId
     const userId = req.user?._id
 
-    if(!(videoId  || comment || userId))
+    if(!(vedioId  || comment || userId))
     {
         throw new ApiError(400, "Please provide all required fields")
     }
 
     const addedComment = await Comment.create(
     {
-        video: videoId,
+        vedio: vedioId,
         commenter: userId,
         content: comment,
     }

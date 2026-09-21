@@ -3,10 +3,10 @@ import { CustomButton } from './CustomButton'
 import { api } from '../api';
 
 
-function Removevideo(
+function RemoveVedio(
 {
     callBack=null,
-    videoId=""
+    vedioId=""
 
 
 }
@@ -29,7 +29,7 @@ function Removevideo(
       = async () =>
       {
 
-          if(!videoId || !callBack)
+          if(!vedioId || !callBack)
           {
               setMsg("Something went wrong, comment-Id or callBack isn't provided")
               removeMsg()
@@ -43,15 +43,15 @@ function Removevideo(
               setMsg("")
   
   
-              const res = await api.delete(`/videos/remove-video-from-history/${videoId}`)
+              const res = await api.delete(`/vedios/remove-vedio-from-history/${vedioId}`)
   
   
               if((res.data.status == 200 || 201) && res.data.success) 
               {
   
-                  setMsg("Successfully deleted video")
+                  setMsg("Successfully deleted vedio")
 
-                  callBack(prev => (prev.filter(video => video._id !== videoId)))
+                  callBack(prev => (prev.filter(vedio => vedio._id !== vedioId)))
   
                   setTimeout(() => 
                   {
@@ -131,4 +131,4 @@ function Removevideo(
   )
 }
 
-export {Removevideo}
+export {RemoveVedio}

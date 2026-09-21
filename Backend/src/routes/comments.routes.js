@@ -12,7 +12,7 @@ const commentRouter = Router()
 
 
 
-commentRouter.route('/add-comment/:videoId').post(verifyJWT, addComment)
+commentRouter.route('/add-comment/:vedioId').post(verifyJWT, addComment)
 
 commentRouter.route('/delete-comment/:commentId').delete(verifyJWT, deleteComment)
 

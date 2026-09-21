@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { CustomButton } from './CustomButton';
 import { api } from '../api';
 
-function videoComments(
+function VedioComments(
     {
-        videoId,
+        vedioId,
         comments =
         [
 
@@ -120,7 +120,7 @@ function videoComments(
 
                     <CommentForm
                         addLocalNewComment={addNewLocalComment}
-                        videoId={videoId}
+                        vedioId={vedioId}
                     />
 
                     <div className="rounded-xl border  border-slate-300 bg-slate-50 p-5 text-center">
@@ -231,4 +231,4 @@ function videoComments(
     )
 }
 
-export { videoComments }
+export { VedioComments }
