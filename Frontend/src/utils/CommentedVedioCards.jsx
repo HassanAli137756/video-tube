@@ -8,7 +8,7 @@ import RemoveComment from './RemoveComment';
 
 
 
-function CommentedVedioCards() 
+function CommentedvideoCards() 
 {
     const currentUser = useSelector(state => state.userReducer.userInfo)
     const [commentId, setCommentId] = useState("")
@@ -22,11 +22,11 @@ function CommentedVedioCards()
 
   
 
-  const getAllVedios = async () =>
+  const getAllvideos = async () =>
   {
     if(!currentUser.userData?._id)
     {
-        setMsg("Please Login to view your liked vedios")
+        setMsg("Please Login to view your liked videos")
         setTimeout(() => 
         {
             navigate("/login")
@@ -48,13 +48,13 @@ function CommentedVedioCards()
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -66,7 +66,7 @@ function CommentedVedioCards()
   useEffect(() =>
   {
 
-    getAllVedios()
+    getAllvideos()
     
   }, [])
   
@@ -92,7 +92,7 @@ return (
           <CustomButton
             type="button"
             name="Reload"
-            onClick={() => getAllVedios()}
+            onClick={() => getAllvideos()}
             isDefaultCassessAllowed={false}
             classes="
                 mt-8
@@ -158,7 +158,7 @@ return (
                 {/* Thumbnail */}
 
                 <Link
-                  to={`/run-vedio/${comment.vedio._id}`}
+                  to={`/run-video/${comment.video._id}`}
                   className="block"
                 >
 
@@ -174,7 +174,7 @@ return (
 
                     <img
                       
-                      src={comment.vedio.thumbNail}
+                      src={comment.video.thumbNail}
                       alt="Video thumbnail"
                       className="
                         h-full
@@ -202,14 +202,14 @@ return (
                         text-white
                       "
                     >
-                      {`${Math.floor(comment.vedio.duration / 3600)
+                      {`${Math.floor(comment.video.duration / 3600)
                         .toString()
                         .padStart(2, "0")}:${Math.floor(
-                        (comment.vedio.duration % 3600) / 60
+                        (comment.video.duration % 3600) / 60
                       )
                         .toString()
                         .padStart(2, "0")}:${(
-                        Math.floor(comment.vedio.duration) % 60
+                        Math.floor(comment.video.duration) % 60
                       )
                         .toString()
                         .padStart(2, "0")}`}
@@ -267,9 +267,9 @@ return (
                     navigate("/profile", {
                       state: {
                         isOwnerProfile:
-                          comment.vedio.owner._id ===
+                          comment.video.owner._id ===
                           currentUser.userData?._id,
-                        channelId: comment.vedio.owner._id,
+                        channelId: comment.video.owner._id,
                       },
                     })
                   }
@@ -285,8 +285,8 @@ return (
 
                   <img
                   
-                    src={comment.vedio.owner.avatar}
-                    alt={comment.vedio.owner.userName}
+                    src={comment.video.owner.avatar}
+                    alt={comment.video.owner.userName}
                     className="
                       h-10
                       w-10
@@ -311,7 +311,7 @@ return (
                       transition-colors
                       hover:text-green-600
                     ">
-                      {comment.vedio.owner.userName}
+                      {comment.video.owner.userName}
                     </p>
 
                   </div>
@@ -445,11 +445,11 @@ return (
             <div className="flex min-h-60 items-center justify-center rounded-xl border border-dashed border-gray-200 bg-white">
                 <div className="text-center">
                     <p className="text-sm font-medium text-gray-700">
-                        No Commented Vedio Found
+                        No Commented video Found
                     </p>
 
                     <p className="mt-1 text-sm text-gray-400">
-                        There is no comment on any vedio.
+                        There is no comment on any video.
                     </p>
                 </div>
             </div>
@@ -463,4 +463,4 @@ return (
 );
 }
 
-export {CommentedVedioCards}
+export {CommentedvideoCards}

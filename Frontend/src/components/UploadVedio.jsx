@@ -1,5 +1,5 @@
 import React from "react";
-import { UploadVedioForm } from "../forms/UploadVedioForm";
+import { UploadvideoForm } from "../forms/UploadvideoForm";
 
 
 
@@ -107,7 +107,7 @@ const VideoUpload = () =>
 
           <div className="px-5 py-8 sm:px-8 sm:py-10">
 
-            <UploadVedioForm />
+            <UploadvideoForm />
 
           </div>
 

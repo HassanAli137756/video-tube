@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VideoCards } from "../utils/VedioCards";
+import { VideoCards } from "../utils/videoCards";
 import { api } from "../api";
 import { CustomButton } from "./CustomButton";
 import { useSelector } from "react-redux";
@@ -17,11 +17,11 @@ function WatchedVideos()
 
   
 
-  const getAllVedios = async () =>
+  const getAllvideos = async () =>
   {
     if(!currentUser.userData?._id)
     {
-        setMsg("Please Login to view your watched vedios")
+        setMsg("Please Login to view your watched videos")
         setTimeout(() => 
         {
             navigate("/login")
@@ -33,7 +33,7 @@ function WatchedVideos()
       setMsg("")
       setLoading(true)
 
-      const res = await api.get(`/vedios/get-watch-history/${currentUser.userData?._id}`)
+      const res = await api.get(`/videos/get-watch-history/${currentUser.userData?._id}`)
 
       if((res.data.status == 200 || 201) && res.data.success)
       {
@@ -43,13 +43,13 @@ function WatchedVideos()
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -60,7 +60,7 @@ function WatchedVideos()
   useEffect(() =>
   {
 
-    getAllVedios()
+    getAllvideos()
     
   }, [])
   
@@ -89,7 +89,7 @@ function WatchedVideos()
         {videos.length > 0 ? (
             <VideoCards 
             allVideos={videos}
-            isAllowedRemoveVedioButton={true}
+            isAllowedRemovevideoButton={true}
             
             />
         ) : !msg ? (
@@ -117,7 +117,7 @@ function WatchedVideos()
               <CustomButton
               type="button"
               name="Reload"
-              onClick={() => getAllVedios()}
+              onClick={() => getAllvideos()}
               isDefaultCassessAllowed={false}
               classes="
                 mt-8

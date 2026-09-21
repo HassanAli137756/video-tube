@@ -3,11 +3,11 @@ import {asyncHandler} from '../../utils/asyncHandler.js'
 import {ApiError} from '../../utils/CustomError.js'
 import {ApiResponse} from '../../utils/CustomResponse.js'
 import {Like} from '../../models/like.models.js'
-import {Vedio} from '../../models/vedio.models.js'
+import {video} from '../../models/video.models.js'
 import mongoose from 'mongoose'
 
 
-const getAllVediosLikes = asyncHandler( async (req, res) =>
+const getAllvideosLikes = asyncHandler( async (req, res) =>
 {
     const userId = req.user?._id
 
@@ -16,7 +16,7 @@ const getAllVediosLikes = asyncHandler( async (req, res) =>
         throw new ApiError(400, "UserId is not provided")
     }
 
-    const userVediosInfo = await Vedio.aggregate(
+    const uservideosInfo = await video.aggregate(
     [
         {
             $match:
@@ -33,7 +33,7 @@ const getAllVediosLikes = asyncHandler( async (req, res) =>
             {
                 from: "likes",
                 localField: "_id",
-                foreignField: "vedio",
+                foreignField: "video",
                 as: "likers"
             }
         },
@@ -56,7 +56,7 @@ const getAllVediosLikes = asyncHandler( async (req, res) =>
                 {
                     $sum: "$totalLikesCounts"
                 },
-                totalVedios:
+                totalvideos:
                 {
                     $sum: 1
                 }
@@ -70,7 +70,7 @@ const getAllVediosLikes = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully served request", userVediosInfo[0])
+        new ApiResponse(200, "Successfully served request", uservideosInfo[0])
     )
 
 
@@ -78,7 +78,7 @@ const getAllVediosLikes = asyncHandler( async (req, res) =>
 })
 
 
-export {getAllVediosLikes}
+export {getAllvideosLikes}
 
 
 

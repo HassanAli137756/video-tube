@@ -11,17 +11,17 @@ const removeLike = asyncHandler( async (req, res) =>
 {
     
     const userId = req.user?._id
-    const vedioId = req.params?.vedioId
+    const videoId = req.params?.videoId
 
 
 
-    if(!userId || !vedioId)
+    if(!userId || !videoId)
     {
         throw new ApiError(400, "Please provide all required fields")
     }
 
 
-    const DBLike = await Like.findOne({liker: userId, vedio: vedioId})
+    const DBLike = await Like.findOne({liker: userId, video: videoId})
 
 
     if(!DBLike)

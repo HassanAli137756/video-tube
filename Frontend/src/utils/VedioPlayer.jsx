@@ -1,11 +1,11 @@
 import React from 'react'
 
 
-function VedioPlayer(
+function videoPlayer(
     {
-        vedioURL = "",
+        videoURL = "",
         thumbNailURL = "",
-        vedioId = "",
+        videoId = "",
 
 
     }) {
@@ -25,7 +25,7 @@ function VedioPlayer(
                         className="w-full h-full object-cover"
                     >
                         <source 
-                        src={vedioURL}
+                        src={videoURL}
                         type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
@@ -37,4 +37,4 @@ function VedioPlayer(
     )
 }
 
-export default React.memo(VedioPlayer)
+export default React.memo(videoPlayer)

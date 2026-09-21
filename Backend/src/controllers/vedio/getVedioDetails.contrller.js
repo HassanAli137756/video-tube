@@ -5,29 +5,29 @@
 import {asyncHandler} from '../../utils/asyncHandler.js'
 import {ApiError} from '../../utils/CustomError.js'
 import {ApiResponse} from '../../utils/CustomResponse.js'
-import {Vedio} from '../../models/vedio.models.js'
+import {video} from '../../models/video.models.js'
 import mongoose from 'mongoose'
 import { Subscription } from '../../models/subscription.models.js'
 
 
 
 
-const getVedioDetails = asyncHandler( async (req, res) =>
+const getvideoDetails = asyncHandler( async (req, res) =>
 {
     
-    const vedioId = req.params?.vedioId
+    const videoId = req.params?.videoId
     const userId = req?.query?.userId
     let subscriptionDoc = {}
 
 
-    console.log("vedioId in getVedioDetails:", vedioId);
-    console.log("UserId in getVedioDetails:", userId);
+    console.log("videoId in getvideoDetails:", videoId);
+    console.log("UserId in getvideoDetails:", userId);
     
 
 
-    if(!vedioId)
+    if(!videoId)
     {
-        throw new ApiError(404, "Something went wrong vedio does not found")
+        throw new ApiError(404, "Something went wrong video does not found")
     }
 
 /* 
@@ -37,12 +37,12 @@ const getVedioDetails = asyncHandler( async (req, res) =>
     }
  */
 
-    const vedioDetails = await Vedio.aggregate(
+    const videoDetails = await video.aggregate(
     [
         {
             $match:
             {
-                _id: new mongoose.Types.ObjectId(vedioId)
+                _id: new mongoose.Types.ObjectId(videoId)
             }
         },
 
@@ -74,7 +74,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
             {
                 from: "likes",
                 localField: "_id",
-                foreignField: "vedio",
+                foreignField: "video",
                 as: "allLikes"
             }
         },
@@ -110,7 +110,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
             {
                 from: "comments",
                 localField: "_id",
-                foreignField: "vedio",
+                foreignField: "video",
                 as: "allcomments",
 
 
@@ -150,7 +150,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
                     {
                         $project:
                         {
-                            commentedVedio: 0
+                            commentedvideo: 0
                         }
                     }
                 ]
@@ -161,7 +161,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
             $project:
             {
                 allLikes: 0,
-                vedio_publicId: 0,
+                video_publicId: 0,
                 thumbNail_publicId: 0,
                 
             }
@@ -172,7 +172,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
 
     if(userId)
     {
-        subscriptionDoc = await Subscription.findOne({channel: vedioDetails[0].owner?._id, subscriber: userId})
+        subscriptionDoc = await Subscription.findOne({channel: videoDetails[0].owner?._id, subscriber: userId})
     }
 
 
@@ -180,7 +180,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully fetched vedio details", {...vedioDetails[0], subscriptionDoc: subscriptionDoc || {}})
+        new ApiResponse(200, "Successfully fetched video details", {...videoDetails[0], subscriptionDoc: subscriptionDoc || {}})
     )
 
 
@@ -189,4 +189,4 @@ const getVedioDetails = asyncHandler( async (req, res) =>
 })
 
 
-export {getVedioDetails}
+export {getvideoDetails}

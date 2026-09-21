@@ -6,7 +6,7 @@ import {Like} from './Like';
 import { Subscribe } from './Subscribe';
 
 
-function VedioInfo(
+function videoInfo(
     {
         subscriptionDoc={},
         title = "",
@@ -17,7 +17,7 @@ function VedioInfo(
         likesCount = 0,
         description = "",
         userData = {},
-        vedioId = ""
+        videoId = ""
 
     }
 ) {
@@ -108,7 +108,7 @@ function VedioInfo(
                         <Subscribe 
                         subscribeDocId={subscriptionDoc?._id}
                         subscribeStatus={subscriptionDoc._id ? true: false}
-                        vedioId={vedioId}
+                        videoId={videoId}
                         ownerId={ownerId}
                         />
 
@@ -118,7 +118,7 @@ function VedioInfo(
                     {/* ACTIONS */}
 
                     <Like 
-                    vedioId={vedioId}
+                    videoId={videoId}
                     isLiked={isLiked}
                     likesCount={likesCount}
                     />
@@ -152,4 +152,4 @@ function VedioInfo(
     )
 }
 
-export { VedioInfo }
+export { videoInfo }

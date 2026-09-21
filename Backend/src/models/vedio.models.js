@@ -1,15 +1,15 @@
 
 import mongoose, {Schema} from 'mongoose'
 
-const vedioSchema = new Schema(
+const videoschema = new Schema(
 {
-    vedio:
+    video:
     {
         type: String,
         required: true
     },
 
-    vedio_publicId:
+    video_publicId:
     {
         type: String,
         required: true
@@ -62,4 +62,4 @@ const vedioSchema = new Schema(
 )
 
 
-export const Vedio = mongoose.model("Vedio", vedioSchema)
+export const video = mongoose.model("video", videoschema)

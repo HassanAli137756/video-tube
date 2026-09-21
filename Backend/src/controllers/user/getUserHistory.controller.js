@@ -50,7 +50,7 @@ const getUserActivitiesCount = asyncHandler( async (req, res) =>
                 from: "likes",
                 localField: "_id",
                 foreignField: "liker",
-                as: "likedVediosCount",
+                as: "likedvideosCount",
 
             }
         },
@@ -63,12 +63,12 @@ const getUserActivitiesCount = asyncHandler( async (req, res) =>
                     $size: "$commentsCount"
                 },
 
-                likedVediosCount:
+                likedvideosCount:
                 {
-                    $size: "$likedVediosCount"
+                    $size: "$likedvideosCount"
                 },
 
-                watchedVediosCount:
+                watchedvideosCount:
                 {
                     $size: "$watchHistory"
                 }
@@ -79,8 +79,8 @@ const getUserActivitiesCount = asyncHandler( async (req, res) =>
             $project:
             {
                 commentsCount: 1,
-                likedVediosCount: 1,
-                watchedVediosCount: 1
+                likedvideosCount: 1,
+                watchedvideosCount: 1
             }
         }
     ]

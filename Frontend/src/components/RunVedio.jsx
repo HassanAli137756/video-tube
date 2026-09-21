@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import VedioPlayer from "../utils/VedioPlayer";
-import { VedioInfo } from "../utils/VedioInfo";
-import { VedioComments } from "../utils/VedioComments";
+import videoPlayer from "../utils/videoPlayer";
+import { videoInfo } from "../utils/videoInfo";
+import { videoComments } from "../utils/videoComments";
 import { api } from "../api";
 import { useSelector } from "react-redux";
 import { CustomButton } from "../utils/CustomButton";
@@ -10,11 +10,11 @@ import { CustomButton } from "../utils/CustomButton";
 
 function RunVideo() {
 
-  const { vedioId } = useParams();
+  const { videoId } = useParams();
   const navigate = useNavigate()
   const [msg, setMsg] = useState("")
   const currentUser = useSelector(state => state.userReducer.userInfo)
-  const [vedio, setVedio] = useState({})
+  const [video, setvideo] = useState({})
   const [loading, setLoading] = useState(true)
 
 
@@ -28,19 +28,19 @@ function RunVideo() {
     }, 1000);
   }
 
-  const addVedioToHistory = async (vedioId) =>
+  const addvideoToHistory = async (videoId) =>
   {
     
-    const response = await api.post(`/vedios/add-vedio-in-history/${vedioId}`)
+    const response = await api.post(`/videos/add-video-in-history/${videoId}`)
 
   }
 
 
-  const getVedio = async () => 
+  const getvideo = async () => 
   {
     
-    if (vedioId.length === 0) {
-      setMsg("No vedio found please try again")
+    if (videoId.length === 0) {
+      setMsg("No video found please try again")
 
       
       navigation("/")
@@ -53,18 +53,18 @@ function RunVideo() {
       setMsg("")
       setLoading(true)
 
-      const res = await api.get(`/vedios/get-vedio-info/${vedioId}?userId=${currentUser.userData?._id || ""}`)
+      const res = await api.get(`/videos/get-video-info/${videoId}?userId=${currentUser.userData?._id || ""}`)
 
       if ((res.data.status == 200 || 201) && res.data.success) 
       {
 
 
         
-        setVedio(res.data.data)
+        setvideo(res.data.data)
 
         if(localStorage.getItem("localSaveStatus") == 1 )
         {
-          await addVedioToHistory(res.data.data._id)
+          await addvideoToHistory(res.data.data._id)
         }
 
         
@@ -72,7 +72,7 @@ function RunVideo() {
 
       else 
       {
-        setMsg("Something went wrong, failed to fetched vedio")
+        setMsg("Something went wrong, failed to fetched video")
 
       }
 
@@ -80,7 +80,7 @@ function RunVideo() {
 
     catch(error) 
     {
-      setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedio")
+      setMsg(error.response?.data?.message || "Something went wrong, failed to fetched video")
     }
 
     finally 
@@ -92,7 +92,7 @@ function RunVideo() {
   useEffect(() => 
   {
 
-    getVedio()
+    getvideo()
 
   }, [])
 
@@ -109,17 +109,17 @@ function RunVideo() {
       )}
 
       {
-        !loading && msg.length > 0 && !vedio._id &&
+        !loading && msg.length > 0 && !video._id &&
         <div className="absolute inset-0 z-30  flex items-center justify-center bg-white/70 ">
           
           <div>
           <p className="font-semibold italic text-red-600 ">
-            {msg} Failed to fetched vedio
+            {msg} Failed to fetched video
           </p>
 
           <div className="leading-7 flex justify-center">
             <CustomButton
-            onClick={() => getVedio()}
+            onClick={() => getvideo()}
             name="Reload"
 
             />
@@ -130,33 +130,33 @@ function RunVideo() {
       }
 
       {
-        !loading && vedio._id &&
+        !loading && video._id &&
         <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-        <VedioPlayer
-        thumbNailURL={vedio.thumbNail}
-        vedioId={vedio._id}
-        vedioURL={vedio.vedio}
+        <videoPlayer
+        thumbNailURL={video.thumbNail}
+        videoId={video._id}
+        videoURL={video.video}
         />
 
 
-        <VedioInfo
-        subscriptionDoc={vedio.subscriptionDoc}
-        vedioId={vedio._id}
-        description={vedio.description}
-        isLiked={vedio.isLiked}
-        ownerAvatar={vedio.owner.avatar}
-        ownerId={vedio.owner._id}
-        ownerName={vedio.owner.userName}
-        title={vedio.title}
-        likesCount={vedio.likesCounts}
+        <videoInfo
+        subscriptionDoc={video.subscriptionDoc}
+        videoId={video._id}
+        description={video.description}
+        isLiked={video.isLiked}
+        ownerAvatar={video.owner.avatar}
+        ownerId={video.owner._id}
+        ownerName={video.owner.userName}
+        title={video.title}
+        likesCount={video.likesCounts}
         userData={currentUser.userData}
         />
 
 
-        <VedioComments 
-        vedioId={vedio._id}
-        comments={vedio.allcomments}
+        <videoComments 
+        videoId={video._id}
+        comments={video.allcomments}
         userId={currentUser?.userData?._id || "" }
         />
 

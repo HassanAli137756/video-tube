@@ -4,12 +4,12 @@ import {ApiError} from '../../utils/CustomError.js'
 import {User} from '../../models/user.models.js'
 
 
-const addVedioInHistory = asyncHandler( async (req, res) =>
+const addvideoInHistory = asyncHandler( async (req, res) =>
 {
     const userId = req.user?._id
-    const vedioId = req.params?.vedioId
+    const videoId = req.params?.videoId
 
-    if(!userId  || !vedioId)
+    if(!userId  || !videoId)
     {
         throw new ApiError(401, "Please provide all required credentials ")
     }
@@ -25,12 +25,12 @@ const addVedioInHistory = asyncHandler( async (req, res) =>
 
     
 
-    if(DBUser.watchHistory.includes(vedioId))
+    if(DBUser.watchHistory.includes(videoId))
     {
         return res
         .status(200)
         .json(
-            new ApiResponse(200, "Vedio already exist in history")
+            new ApiResponse(200, "video already exist in history")
         )
         
 
@@ -39,14 +39,14 @@ const addVedioInHistory = asyncHandler( async (req, res) =>
     else
     {
 
-        DBUser.watchHistory.push(vedioId)
+        DBUser.watchHistory.push(videoId)
 
         await DBUser.save({validateBeforeSave: false})
 
         return res
         .status(200)
         .json(
-            new ApiResponse(200, "Successfully added vedio to watch History")
+            new ApiResponse(200, "Successfully added video to watch History")
         )
         
     }
@@ -61,4 +61,4 @@ const addVedioInHistory = asyncHandler( async (req, res) =>
 })
 
 
-export {addVedioInHistory}
+export {addvideoInHistory}

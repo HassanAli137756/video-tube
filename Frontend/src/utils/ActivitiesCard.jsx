@@ -45,13 +45,13 @@ const ActivitiesCard = (
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -79,12 +79,12 @@ const ActivitiesCard = (
 
   const activitiesBoxes = [
     {
-      title: "All vedios liked by me",
-      count: activities?.likedVediosCount || 0,
+      title: "All videos liked by me",
+      count: activities?.likedvideosCount || 0,
       icon: "♥",
-      path: "/my-liked-vedios",
+      path: "/my-liked-videos",
       userId: currentUser?._id || "",
-      header: "My Liked Vedio"
+      header: "My Liked video"
     },
     {
       title: "All comments added by me",
@@ -95,12 +95,12 @@ const ActivitiesCard = (
       header: "My Added Comments"
     },
     {
-      title: "All vedios watched by me",
-      count: activities?.watchedVediosCount ||0,
+      title: "All videos watched by me",
+      count: activities?.watchedvideosCount ||0,
       icon: "▶",
-      path: "/my-watched-vedios",      
+      path: "/my-watched-videos",      
       userId: currentUser?._id || "",
-      header: "My Watched Vedios"
+      header: "My Watched videos"
     },
   ];
 

@@ -28,17 +28,17 @@ import { Register } from './authServices/Register'
 
 import { MyProfile } from './components/MyProfile'
 import { MyContent } from './components/MyContent'
-import { VideoUpload } from './components/UploadVedio'
+import { VideoUpload } from './components/Uploadvideo'
 import { MyActivities } from './components/MyActivities'
 
-import { RunVideo } from './components/RunVedio'
-import { UpdateVideo } from './vedioServices/UpdateVedio'
+import { RunVideo } from './components/Runvideo'
+import { UpdateVideo } from './videoservices/Updatevideo'
 
-import { MyVideos } from './utils/MyVedios'
+import { MyVideos } from './utils/Myvideos'
 import { MyStats } from './utils/MyStats'
-import { LikedVideos } from './utils/LikedVedios'
-import { CommentedVedioCards } from './utils/CommentedVedioCards'
-import { WatchedVideos } from './utils/WatchedVedios'
+import { LikedVideos } from './utils/Likedvideos'
+import { CommentedvideoCards } from './utils/CommentedvideoCards'
+import { WatchedVideos } from './utils/Watchedvideos'
 
 import { Settings } from './components/Settings'
 
@@ -60,7 +60,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<Home />} />
       
         <Route
-          path="/run-vedio/:vedioId"
+          path="/run-video/:videoId"
           element={<RunVideo />}
         />
 
@@ -70,7 +70,7 @@ const router = createBrowserRouter(
         />
         
         <Route
-          path="/upload-vedio"
+          path="/upload-video"
           element={<VideoUpload />}
         />
 
@@ -106,13 +106,13 @@ const router = createBrowserRouter(
 
 
         <Route
-          path="/update-vedio"
+          path="/update-video"
           element={<UpdateVideo />}
         />
 
 
         <Route
-          path="/my-vedios"
+          path="/my-videos"
           element={<MyVideos />}
         />
 
@@ -124,19 +124,19 @@ const router = createBrowserRouter(
 
 
         <Route
-          path="/my-liked-vedios"
+          path="/my-liked-videos"
           element={<LikedVideos />}
         />
 
 
         <Route
           path="/my-added-comments"
-          element={<CommentedVedioCards />}
+          element={<CommentedvideoCards />}
         />
 
 
         <Route
-          path="/my-watched-vedios"
+          path="/my-watched-videos"
           element={<WatchedVideos />}
         />
 

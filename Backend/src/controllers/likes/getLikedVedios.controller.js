@@ -10,7 +10,7 @@ import mongoose from 'mongoose'
 
 
 
-const getLikedVedios = asyncHandler( async (req, res) =>
+const getLikedvideos = asyncHandler( async (req, res) =>
 {
     const DBUserId = req.user?._id
  
@@ -23,7 +23,7 @@ const getLikedVedios = asyncHandler( async (req, res) =>
     
     
 
-    const allLikedVedios = await User.aggregate(
+    const allLikedvideos = await User.aggregate(
     [
         {
             $match:
@@ -38,17 +38,17 @@ const getLikedVedios = asyncHandler( async (req, res) =>
                 from: "likes",
                 localField: "_id",
                 foreignField: "liker",
-                as: "allLikedVedios",
+                as: "allLikedvideos",
 
                 pipeline:
                 [
                     {
                         $lookup:
                         {
-                            from: "vedios",
-                            localField: "vedio",
+                            from: "videos",
+                            localField: "video",
                             foreignField: "_id",
-                            as: "vedio",
+                            as: "video",
 
                             pipeline:
                             [
@@ -86,7 +86,7 @@ const getLikedVedios = asyncHandler( async (req, res) =>
                                 {
                                     $project:
                                     {
-                                        vedio: 1,
+                                        video: 1,
                                         owner: 1,
                                         title: 1,
                                         description: 1,
@@ -112,16 +112,16 @@ const getLikedVedios = asyncHandler( async (req, res) =>
                     {
                         $addFields:
                         {
-                            vedio:
+                            video:
                             {
-                                $first: "$vedio"
+                                $first: "$video"
                             }
                         }
                     },
 
                     {
                         $replaceRoot: {
-                            newRoot: "$vedio"
+                            newRoot: "$video"
                         }
                     }
 
@@ -133,7 +133,7 @@ const getLikedVedios = asyncHandler( async (req, res) =>
         {
             $project:
             {
-                allLikedVedios: 1
+                allLikedvideos: 1
             }
         }
         
@@ -148,7 +148,7 @@ const getLikedVedios = asyncHandler( async (req, res) =>
     return res
     .status(200)
     .json(
-        new ApiResponse(200, "Successfully fetched all liked vedios", allLikedVedios[0])
+        new ApiResponse(200, "Successfully fetched all liked videos", allLikedvideos[0])
     )
 
 
@@ -156,4 +156,4 @@ const getLikedVedios = asyncHandler( async (req, res) =>
 })
 
 
-export {getLikedVedios}
+export {getLikedvideos}

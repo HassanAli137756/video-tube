@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom'
 import { api } from '../api'
 
 
-function UpdateVedioForm(
+function UpdatevideoForm(
 {
     title="",
     description="",
     isPublished=true,
     routePath="/my-content",
-    vedioId=""
+    videoId=""
 
 }) {
     
@@ -28,7 +28,7 @@ function UpdateVedioForm(
 
     
 
-    const updateVedio = async (data) => 
+    const updatevideo = async (data) => 
     {
 
         if(data.title?.trim() == "" || data.description?.trim() == "" || typeof data.isPublished !== "boolean" )
@@ -51,7 +51,7 @@ function UpdateVedioForm(
             formData.append("thumbNail", data.thumbNail[0]?.name ? data.thumbNail[0] : null)
 
 
-            const res = await api.patch(`/vedios/update-vedio/${vedioId}`, formData)
+            const res = await api.patch(`/videos/update-video/${videoId}`, formData)
 
             if((res.status == 200 || 201) && res.data.success)
             {
@@ -96,7 +96,7 @@ function UpdateVedioForm(
             
 
             <form
-                onSubmit={handleSubmit(updateVedio)}
+                onSubmit={handleSubmit(updatevideo)}
                 className="mt-10 space-y-7">
 
                 {msg.length > 0 && (
@@ -112,7 +112,7 @@ function UpdateVedioForm(
                     errors={errors}
                     register={register}
                     isRequired={true}
-                    label='Vedio Title'
+                    label='video Title'
                     message='Provide a short updated title'
                     name='title'
                     placeHolder='Type Title...'
@@ -123,7 +123,7 @@ function UpdateVedioForm(
                     defaulValue={description}
                     register={register}
                     isRequired={true}
-                    label='Vedio Description'
+                    label='video Description'
                     message='Provide a deep updated description'
                     name='description'
                     placeHolder='Type Purposes...'
@@ -136,7 +136,7 @@ function UpdateVedioForm(
                     name={'isPublished'}
                     register={register}
                     options={[{ label: "YES, will be published", value: true }, { label: "NO, will not be published", value: false }]}
-                    placeholder='is this vedio will be published?'
+                    placeholder='is this video will be published?'
 
                 />
 
@@ -221,4 +221,4 @@ function UpdateVedioForm(
     )
 }
 
-export { UpdateVedioForm }
+export { UpdatevideoForm }

@@ -46,13 +46,13 @@ const ProfileCard = (
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -85,11 +85,11 @@ const ProfileCard = (
     },
     {
       title: "Uploaded Videos",
-      count: user?.totalVedios ||0,
+      count: user?.totalvideos ||0,
       icon: "▶",
       path:"/my-stats",
-      data: user?.vedios || [],
-      purpose: "vedios"
+      data: user?.videos || [],
+      purpose: "videos"
 
     },
     {
@@ -203,7 +203,7 @@ const ProfileCard = (
               <div
               >
                 <p className="text-xl font-bold text-gray-900">
-                  {user?.totalVedios || 0}
+                  {user?.totalvideos || 0}
                 </p>
 
                 <p className="text-xs text-gray-500">
@@ -260,7 +260,7 @@ const ProfileCard = (
           {stats.map((stat) => (
 
             <div
-              onClick={() => ( (isAuthorized && stat.path.length > 0) || stat.purpose == "vedios"  ? navigate(stat.path, {state: {header: stat.header, message: stat.message, data: stat.data, isAuthorized: isAuthorized, purpose: stat.purpose}}) : null)}
+              onClick={() => ( (isAuthorized && stat.path.length > 0) || stat.purpose == "videos"  ? navigate(stat.path, {state: {header: stat.header, message: stat.message, data: stat.data, isAuthorized: isAuthorized, purpose: stat.purpose}}) : null)}
               key={stat.title}
               className="
                 group cursor-pointer

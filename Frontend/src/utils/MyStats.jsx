@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import {VideoCards} from './VedioCards'
+import {VideoCards} from './videoCards'
 import { SubscriberCards } from "./SubscribedCards";
 
 
@@ -46,7 +46,7 @@ const MyStats = (
         ">
 
           {
-            purpose == "vedios" ? 
+            purpose == "videos" ? 
             <div className="">
               <VideoCards
               allVideos={data}

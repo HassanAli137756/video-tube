@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {api} from '../api'
-import {VideoCards} from '../utils/VedioCards'
+import {VideoCards} from '../utils/videoCards'
 import {CustomButton} from '../utils/CustomButton'
 
 
 
-function CurrentUserVedios() {
+function CurrentUservideos() {
 
 
 
@@ -13,12 +13,12 @@ function CurrentUserVedios() {
     const [loading, setLoading] = useState(false)
     const [msg, setMsg] = useState("")
 
-    const getAllVedios = async () => {
+    const getAllvideos = async () => {
         try {
             setMsg("")
             setLoading(true)
 
-            const res = await api.get('/vedios/get-user-vedios')
+            const res = await api.get('/videos/get-user-videos')
 
             if ((res.data.status == 200 || 201) && res.data.success) 
             {
@@ -29,12 +29,12 @@ function CurrentUserVedios() {
 
             }
             else {
-                setMsg("Something went wrong, failed to fetched vedios")
+                setMsg("Something went wrong, failed to fetched videos")
             }
 
         }
         catch (error) {
-            setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+            setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
         }
         finally {
             setLoading(false)
@@ -43,7 +43,7 @@ function CurrentUserVedios() {
 
     useEffect(() => {
 
-        getAllVedios()
+        getAllvideos()
 
     }, [])
 
@@ -76,7 +76,7 @@ function CurrentUserVedios() {
                     </div>
 
                     <CustomButton
-                        onClick={() => getAllVedios()}
+                        onClick={() => getAllvideos()}
                         classes="
                         inline-flex items-center gap-2
                         rounded-lg
@@ -130,7 +130,7 @@ function CurrentUserVedios() {
                             <CustomButton
                                 type="button"
                                 name="Reload"
-                                onClick={() => getAllVedios()}
+                                onClick={() => getAllvideos()}
                                 isDefaultCassessAllowed={false}
                                 classes="
                                 mt-8
@@ -162,4 +162,4 @@ function CurrentUserVedios() {
     )
 }
 
-export { CurrentUserVedios }
+export { CurrentUservideos }

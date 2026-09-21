@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VideoCards } from "../utils/VedioCards";
+import { VideoCards } from "../utils/videoCards";
 import { api } from "../api";
 import { CustomButton } from "./CustomButton";
 import { useSelector } from "react-redux";
@@ -17,11 +17,11 @@ function LikedVideos()
 
   
 
-  const getAllVedios = async () =>
+  const getAllvideos = async () =>
   {
     if(!currentUser.userData?._id)
     {
-        setMsg("Please Login to view your liked vedios")
+        setMsg("Please Login to view your liked videos")
         setTimeout(() => 
         {
             navigate("/login")
@@ -33,23 +33,23 @@ function LikedVideos()
       setMsg("")
       setLoading(true)
 
-      const res = await api.get('/likes/get-liked-vedios')
+      const res = await api.get('/likes/get-liked-videos')
 
       if((res.data.status == 200 || 201) && res.data.success)
       {
         
-        setVideos(res.data.data.allLikedVedios)
+        setVideos(res.data.data.allLikedvideos)
 
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -60,7 +60,7 @@ function LikedVideos()
   useEffect(() =>
   {
 
-    getAllVedios()
+    getAllvideos()
     
   }, [])
   
@@ -117,7 +117,7 @@ function LikedVideos()
               <CustomButton
               type="button"
               name="Reload"
-              onClick={() => getAllVedios()}
+              onClick={() => getAllvideos()}
               isDefaultCassessAllowed={false}
               classes="
                 mt-8

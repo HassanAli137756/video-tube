@@ -1,5 +1,5 @@
 import React from 'react'
-import { UpdateVedioForm } from '../forms/UpdateVedioForm'
+import { UpdatevideoForm } from '../forms/UpdatevideoForm'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
@@ -8,15 +8,15 @@ const UpdateVideo = (
 
 ) => {
 
-    const {title, description, isPublished, vedioId, routePath} = useLocation().state || {}
+    const {title, description, isPublished, videoId, routePath} = useLocation().state || {}
     const [msg, setMsg] = useState("")
     const navigate = useNavigate()
     
     
     useEffect(() => {
 
-        if (!vedioId) {
-            setMsg("Vedio is not provided")
+        if (!videoId) {
+            setMsg("video is not provided")
             
         }
 
@@ -114,17 +114,17 @@ const UpdateVideo = (
 
 
                         {
-                            title && description && vedioId ?
-                            <UpdateVedioForm
+                            title && description && videoId ?
+                            <UpdatevideoForm
                             description={description}
                             isPublished={isPublished}
                             routePath={routePath}
                             title={title}
-                            vedioId={vedioId}
+                            videoId={videoId}
                             /> :
                             <div className='flex justify-center items-center'>
                                 <p className='text-red-500 italic'>
-                                    Failed to get existing vedio data
+                                    Failed to get existing video data
                                 </p>
                             </div>
                         }

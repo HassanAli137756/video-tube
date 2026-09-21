@@ -2,24 +2,24 @@
 import {Router} from 'express'
 import { verifyJWT } from '../middelwares/auth.middelwares.js'
 import { uploader } from '../middelwares/multer.middleware.js'
-import {deleteVedio} from '../controllers/vedio/deleteVedio.controller.controller.js'
-import {getVedioDetails} from '../controllers/vedio/getVedioDetails.contrller.js'
-import {updateVedio} from '../controllers/vedio/updateVedio.controller.js'
-import {uploadVedio} from '../controllers/vedio/uploadVedio.controller.js'
-import {getWatchHistory} from '../controllers/vedio/watchHistory.controllers.js'
+import {deletevideo} from '../controllers/video/deletevideo.controller.controller.js'
+import {getvideoDetails} from '../controllers/video/getvideoDetails.contrller.js'
+import {updatevideo} from '../controllers/video/updatevideo.controller.js'
+import {uploadvideo} from '../controllers/video/uploadvideo.controller.js'
+import {getWatchHistory} from '../controllers/video/watchHistory.controllers.js'
 import multer from 'multer'
-import {getUserUploadedVedios} from '../controllers/vedio/getUserUploadedVedios.controller.js'
-import {getAllVedios} from '../controllers/vedio/getAllVedios.controller.js'
-import {addVedioInHistory} from '../controllers/vedio/addVedioInHistory.controller.js'
-import {removeVedioFromHistory} from '../controllers/vedio/removeVedioFromWatch.js'
+import {getUserUploadedvideos} from '../controllers/video/getUserUploadedvideos.controller.js'
+import {getAllvideos} from '../controllers/video/getAllvideos.controller.js'
+import {addvideoInHistory} from '../controllers/video/addvideoInHistory.controller.js'
+import {removevideoFromHistory} from '../controllers/video/removevideoFromWatch.js'
 
 
 
-const vedioRouter = Router()
+const videoRouter = Router()
 
 
-vedioRouter.
-route('/upload-vedio').
+videoRouter.
+route('/upload-video').
 post(
     verifyJWT, 
     uploader.fields(
@@ -30,31 +30,31 @@ post(
         },
 
         {
-            name: "vedio",
+            name: "video",
             maxCount: 1
         }
     ]
-    ), uploadVedio )
+    ), uploadvideo )
 
 
 
 
-vedioRouter.route('/update-vedio/:vedioId').patch(verifyJWT, uploader.single('thumbNail'), updateVedio)
+videoRouter.route('/update-video/:videoId').patch(verifyJWT, uploader.single('thumbNail'), updatevideo)
 
-vedioRouter.route('/delete-vedio/:vedioId').delete(verifyJWT, deleteVedio)
+videoRouter.route('/delete-video/:videoId').delete(verifyJWT, deletevideo)
 
-vedioRouter.route('/get-vedio-info/:vedioId').get( getVedioDetails)
+videoRouter.route('/get-video-info/:videoId').get( getvideoDetails)
 
-vedioRouter.route('/get-user-vedios').get(verifyJWT, getUserUploadedVedios)
+videoRouter.route('/get-user-videos').get(verifyJWT, getUserUploadedvideos)
 
-vedioRouter.route('/get-all-vedios').get(getAllVedios)
+videoRouter.route('/get-all-videos').get(getAllvideos)
 
-vedioRouter.route('/get-watch-history/:userId').get(verifyJWT, getWatchHistory)
+videoRouter.route('/get-watch-history/:userId').get(verifyJWT, getWatchHistory)
 
-vedioRouter.route('/add-vedio-in-history/:vedioId').post(verifyJWT, addVedioInHistory)
+videoRouter.route('/add-video-in-history/:videoId').post(verifyJWT, addvideoInHistory)
 
-vedioRouter.route('/remove-vedio-from-history/:vedioId').delete(verifyJWT, removeVedioFromHistory)
+videoRouter.route('/remove-video-from-history/:videoId').delete(verifyJWT, removevideoFromHistory)
 
-export {vedioRouter}
+export {videoRouter}
 
 
