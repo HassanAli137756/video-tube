@@ -26,12 +26,6 @@ app.use(cookieParser())
 
 
 
-// app.js me baaki routes se upar add karen
-app.get('/', (req, res) => {
-    res.json({ message: "VideoTube Backend is Live and Running Successfully!" });
-});
-
-
 
 app.use('/api/v1/users', userRouter)
 

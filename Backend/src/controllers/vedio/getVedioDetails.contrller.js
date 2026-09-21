@@ -45,28 +45,7 @@ const getVedioDetails = asyncHandler( async (req, res) =>
                 _id: new mongoose.Types.ObjectId(vedioId)
             }
         },
-/* 
-        {
-            
-            $lookup:
-            {
-                from: "subscriptions",
-                localField: "owner",
-                foreignField: "channel",
-                as: "allOwnerSubscribers",
 
-                pipeline:
-                [
-                    {
-                        $match:
-                        {
-
-                        }
-                    }
-                ]
-            }
-            
-        }, */
 
         {
             $lookup:
