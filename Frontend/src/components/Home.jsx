@@ -54,6 +54,7 @@ function Home()
 
   return (
     <div>
+    <div>project have deployed</div>
     <main className=" relative min-h-[calc(100vh-4rem)] bg-gray-50">
         {loading && (
           <div className="absolute inset-0 z-50  flex items-center justify-center bg-white/70 ">
