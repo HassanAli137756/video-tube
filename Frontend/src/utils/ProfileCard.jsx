@@ -159,7 +159,7 @@ const ProfileCard = (
           </h1>
 
           <p className="mt-1 text-sm text-gray-500">
-            Manage and view your activity
+            Manage and view your profile details
           </p>
         </div>
 
