@@ -29,7 +29,7 @@ function CommentForm(
     {
 
         if (!addLocalNewComment || !vedioId) {
-            return setMsg("Callback and vedioId must be provided")
+            return setMsg("Callback and videoId must be provided")
         }
 
         

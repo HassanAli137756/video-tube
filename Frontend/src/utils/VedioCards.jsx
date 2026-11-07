@@ -38,7 +38,7 @@ function VideoCards({
 
       if(!vedioId)
       {
-        return setMsg("Vedio id is not provided")
+        return setMsg("Video id is not provided")
       }
 
         try 
@@ -60,12 +60,12 @@ function VideoCards({
 
             }
             else {
-                setMsg("Something went wrong, failed to delete vedio")
+                setMsg("Something went wrong, failed to delete video")
             }
 
         }
         catch (error) {
-            setMsg(error.response?.data?.message || "Something went wrong, failed to delete vedio")
+            setMsg(error.response?.data?.message || "Something went wrong, failed to delete video")
             
             removeMsg()
         }
@@ -95,7 +95,7 @@ function VideoCards({
       {loading && (
         <div className="absolute inset-0 z-50  flex items-center justify-center bg-white/70 ">
           <div className="flex justify-center text-red-500 items-center italic">
-            <p>Please wait deleting vedio...</p>
+            <p>Please wait deleting video...</p>
           </div>
         </div>
       )}
@@ -107,7 +107,7 @@ function VideoCards({
             <div className=" grid relative gap-4 rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
 
               <p className=" text-red-500 ">
-              Are you sure you want to delete vedio
+              Are you sure you want to delete video
             </p>
             <div className="flex justify-evenly">
               <CustomButton

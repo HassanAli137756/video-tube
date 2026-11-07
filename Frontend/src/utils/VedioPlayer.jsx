@@ -5,7 +5,6 @@ function VedioPlayer(
     {
         vedioURL = "",
         thumbNailURL = "",
-        vedioId = "",
 
 
     }) {

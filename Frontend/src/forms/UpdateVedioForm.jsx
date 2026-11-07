@@ -112,7 +112,7 @@ function UpdateVedioForm(
                     errors={errors}
                     register={register}
                     isRequired={true}
-                    label='Vedio Title'
+                    label='Video Title'
                     message='Provide a short updated title'
                     name='title'
                     placeHolder='Type Title...'
@@ -123,7 +123,7 @@ function UpdateVedioForm(
                     defaulValue={description}
                     register={register}
                     isRequired={true}
-                    label='Vedio Description'
+                    label='Video Description'
                     message='Provide a deep updated description'
                     name='description'
                     placeHolder='Type Purposes...'
@@ -136,7 +136,7 @@ function UpdateVedioForm(
                     name={'isPublished'}
                     register={register}
                     options={[{ label: "YES, will be published", value: true }, { label: "NO, will not be published", value: false }]}
-                    placeholder='is this vedio will be published?'
+                    placeholder='is this video will be published?'
 
                 />
 

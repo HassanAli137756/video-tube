@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { api } from '../api'
-import { VideoCards } from '../utils/VedioCards'
-import { CustomButton } from '../utils/CustomButton'
 import { useNavigate } from 'react-router-dom'
 
 

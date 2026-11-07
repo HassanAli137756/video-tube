@@ -135,6 +135,7 @@ function CustomImageInput(
                         field.onChange?.(e)
                     }
                     }
+                    name={name}
                     id={name}
                     type="file"
                     accept="image/*"

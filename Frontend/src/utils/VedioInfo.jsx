@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { CustomButton } from './CustomButton';
-import { api } from '../api';
-import {Like} from './Like';
+import { useNavigate } from "react-router-dom";
 import { Subscribe } from './Subscribe';
 
 

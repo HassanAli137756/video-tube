@@ -16,7 +16,7 @@ const UpdateVideo = (
     useEffect(() => {
 
         if (!vedioId) {
-            setMsg("Vedio is not provided")
+            setMsg("Video is not provided")
             
         }
 
@@ -124,7 +124,7 @@ const UpdateVideo = (
                             /> :
                             <div className='flex justify-center items-center'>
                                 <p className='text-red-500 italic'>
-                                    Failed to get existing vedio data
+                                    Failed to get existing video data
                                 </p>
                             </div>
                         }

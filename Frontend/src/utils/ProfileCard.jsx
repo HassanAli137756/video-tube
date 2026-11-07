@@ -46,13 +46,13 @@ const ProfileCard = (
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {

@@ -11,7 +11,6 @@ import RemoveComment from './RemoveComment';
 function CommentedVedioCards() 
 {
     const currentUser = useSelector(state => state.userReducer.userInfo)
-    const [commentId, setCommentId] = useState("")
     const navigate = useNavigate()
 
     
@@ -26,7 +25,7 @@ function CommentedVedioCards()
   {
     if(!currentUser.userData?._id)
     {
-        setMsg("Please Login to view your liked vedios")
+        setMsg("Please Login to view your liked videos")
         setTimeout(() => 
         {
             navigate("/login")
@@ -48,13 +47,13 @@ function CommentedVedioCards()
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {
@@ -445,11 +444,11 @@ return (
             <div className="flex min-h-60 items-center justify-center rounded-xl border border-dashed border-gray-200 bg-white">
                 <div className="text-center">
                     <p className="text-sm font-medium text-gray-700">
-                        No Commented Vedio Found
+                        No Commented Video Found
                     </p>
 
                     <p className="mt-1 text-sm text-gray-400">
-                        There is no comment on any vedio.
+                        There is no comment on any video.
                     </p>
                 </div>
             </div>

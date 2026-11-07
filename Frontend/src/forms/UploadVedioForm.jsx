@@ -126,7 +126,7 @@ function UploadVedioForm()
         errors={errors}
         register={register}
         isRequired={true}
-        label='Vedio Title'
+        label='Video Title'
         message='Provide a short title'
         name='title'
         placeHolder='Type Title...'
@@ -136,7 +136,7 @@ function UploadVedioForm()
         errors={errors}
         register={register}
         isRequired={true}
-        label='Vedio Description'
+        label='Video Description'
         message='Provide a deep description'
         name='description'
         placeHolder='Type Purposes...'
@@ -149,7 +149,7 @@ function UploadVedioForm()
         name={'isPublished'}
         register={register}
         options={[{label: "YES, will be published", value:true}, {label: "NO, will not be published", value:false}]}
-        placeholder='is this vedio will be published?'
+        placeholder='is this Video will be published?'
 
         />
 
@@ -175,10 +175,10 @@ function UploadVedioForm()
         register={register}
         acceptingFileNames='MP4, WebM'
         isRequired={true}
-        label='Vedio'
+        label='Video'
         logo={"▶️"}
         name='vedio'
-        title='Upload Vedio'
+        title='Upload Video'
 
         
         />

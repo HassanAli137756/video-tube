@@ -2,10 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate, Outlet } from 'react-router-dom'
 
-import { NoInternet } from '../utils/InternetError'
-import { Login } from '../authServices/Login'
-import { Layout } from './Layout'
-import { Header } from './Header'
 
 
 function AuthorizedUserLayout() {

@@ -3,62 +3,7 @@ import React from "react";
 
 
 const MyVideos = () => {
-  const videos = [
-    {
-      id: 1,
-      thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4",
-      title: "Beautiful Nature and Mountain Views",
-      channel: "Hassan Ali",
-      views: "1.2K",
-      time: "2 days ago",
-      duration: "12:45",
-    },
-    {/*  */
-      id: 2,
-      thumbnail: "https://images.unsplash.com/photo-1519681393784-d120267933ba",
-      title: "Exploring the Beautiful Mountains",
-      channel: "Hassan Ali",
-      views: "856",
-      time: "5 days ago",
-      duration: "08:32",
-    },
-    {
-      id: 3,
-      thumbnail: "https://images.unsplash.com/photo-1500534623283-312aade485b7",
-      title: "A Peaceful Journey Through Nature",
-      channel: "Hassan Ali",
-      views: "2.4K",
-      time: "1 week ago",
-      duration: "15:20",
-    },
-    {
-      id: 4,
-      thumbnail: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e",
-      title: "Amazing Places You Should Visit",
-      channel: "Hassan Ali",
-      views: "3.1K",
-      time: "2 weeks ago",
-      duration: "10:18",
-    },
-    {
-      id: 5,
-      thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b",
-      title: "The Beauty of Mountains",
-      channel: "Hassan Ali",
-      views: "945",
-      time: "3 weeks ago",
-      duration: "07:41",
-    },
-    {
-      id: 6,
-      thumbnail: "https://images.unsplash.com/photo-1500534623283-312aade485b7",
-      title: "Relaxing Nature Experience",
-      channel: "Hassan Ali",
-      views: "1.8K",
-      time: "1 month ago",
-      duration: "11:05",
-    },
-  ];
+  const videos = [];
 
   return (
     <div className="min-h-screen bg-white px-6 py-8">

@@ -32,8 +32,8 @@ function Header() {
           name: "My Profile"
         },
         {
-          path: "/my-activites",
-          name: "My-Activites"
+          path: "/my-activities",
+          name: "My Activities"
         },
         {
           path: "/settings",

@@ -114,7 +114,7 @@ function RunVideo() {
           
           <div>
           <p className="font-semibold italic text-red-600 ">
-            {msg} Failed to fetched vedio
+            {msg} Failed to fetched video
           </p>
 
           <div className="leading-7 flex justify-center">

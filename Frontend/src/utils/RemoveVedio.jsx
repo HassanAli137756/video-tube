@@ -49,7 +49,7 @@ function RemoveVedio(
               if((res.data.status == 200 || 201) && res.data.success) 
               {
   
-                  setMsg("Successfully deleted vedio")
+                  setMsg("Successfully deleted video")
 
                   callBack(prev => (prev.filter(vedio => vedio._id !== vedioId)))
   
