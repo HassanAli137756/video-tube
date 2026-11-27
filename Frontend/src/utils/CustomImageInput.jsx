@@ -2,6 +2,7 @@ import React from 'react'
 
 function CustomImageInput(
     {
+        fileType="image/*",
         fileName="",
         onChange,
         label = "",
@@ -137,7 +138,7 @@ function CustomImageInput(
                     }
                     id={name}
                     type="file"
-                    accept="image/*"
+                    accept={fileType}
                     className="hidden"
                 />
                 {

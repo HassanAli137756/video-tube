@@ -101,7 +101,7 @@ function VedioInfo(
                             </div>
 
                             <p className="text-xs text-slate-500">
-                                Creator
+                                Creater
                             </p>
                         </div>
 

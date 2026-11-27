@@ -169,6 +169,7 @@ function UploadVedioForm()
         />
 
         <CustomImageInput
+        fileType='video/*'
         onChange={(file) => setVedioFile(file)}
         fileName={`${vedioFile?.name || "No File "} Selected`}
         errors={errors}

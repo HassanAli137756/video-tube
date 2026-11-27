@@ -26,7 +26,7 @@ function CommentedVedioCards()
   {
     if(!currentUser.userData?._id)
     {
-        setMsg("Please Login to view your liked vedios")
+        setMsg("Please Login to view your liked videos")
         setTimeout(() => 
         {
             navigate("/login")
@@ -48,13 +48,13 @@ function CommentedVedioCards()
       }
       else
       {
-        setMsg("Something went wrong, failed to fetched vedios")
+        setMsg("Something went wrong, failed to fetched videos")
       }
 
     } 
     catch(error) 
     {
-        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched vedios")
+        setMsg(error.response?.data?.message || "Something went wrong, failed to fetched videos")
     }
     finally
     {

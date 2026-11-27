@@ -98,7 +98,7 @@ const router = createBrowserRouter(
 
 
         <Route
-          path="/my-activites"
+          path="/my-activities"
           element={<MyActivities />}
         />
 
