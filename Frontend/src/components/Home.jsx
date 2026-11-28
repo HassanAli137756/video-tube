@@ -69,6 +69,10 @@ function Home()
           <div className="max-w-2xl">
             <p className="mb-2 text-sm font-semibold text-green-600">
               VideoTube
+
+For quick login enter following credentials;
+username: Hassan Ali
+password: 11111111
             </p>
 
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
