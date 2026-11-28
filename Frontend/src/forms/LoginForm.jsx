@@ -117,7 +117,7 @@ function LoginForm() {
             placeHolder='user name or email...'
             message='Provide user name or email address'
             isRequired={true}
-            defaulValue={state?.email || ""}
+            defaulValue={state?.email || "Hassan Ali"}
           />
         </div>
 
@@ -133,7 +133,7 @@ function LoginForm() {
             errors={errors}
             register={register}
             label='Password'
-            xmlns='http://www.w3.org/2000/svg'
+           defaulValue={"11111111"} xmlns='http://www.w3.org/2000/svg'
             iconDesigne='M12 11c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm6-2h-1V7a5 5 0 00-10 0v2H6a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2v-8a2 2 0 00-2-2zm-9-2a3 3 0 116 0v2H9V7z'
             isRequired={true}
             type={isPasswordHidden ? "password" : "text"}
